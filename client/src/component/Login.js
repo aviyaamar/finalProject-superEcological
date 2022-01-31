@@ -10,7 +10,7 @@ const Login = () => {
     const handleSubmission = async () => {
       try {
           setIsCancelActive(false);
-          const res = await Api.post('/login', {
+          const res = await Api.post('users/login', {
               password: password.toString(),
               email
           });

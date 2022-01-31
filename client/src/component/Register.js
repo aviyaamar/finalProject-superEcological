@@ -26,7 +26,7 @@ const Sign = () => {
             }, 2000)
         } else {
             try {
-                const res = await Api.post('/register', {
+                const res = await Api.post('users/register', {
                     password: password.toString(),
                     email,
                     name
