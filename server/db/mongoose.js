@@ -1,3 +1,7 @@
 const mongoose = require('mongoose')
+const uri = 'mongodb+srv://aviyahazan:aviya2804@finalproject.oeixo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
-mongoose.connect('mongodb://127.0.0.1:27017/finalProject')
+mongoose.connect(uri,{
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+})

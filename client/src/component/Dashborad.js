@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Login from '../component/Login'
-import Register from '../component/Register'
+import Login from './Login'
+import Register from './Register'
 import Api from '../Api/Api'
 
 const Home = () => {

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const reviewSchema = mongoose.Schema({
 
     userid : {
@@ -32,8 +33,8 @@ const productSchema = mongoose.Schema({
          require:true
      } ,
      category : {
-         type:String,
-         require:true
+        type:String, 
+        required: true
      } ,
      description : {
          type:String ,
@@ -52,7 +53,12 @@ const productSchema = mongoose.Schema({
          require:true,
          default : 0
      } ,
-
+     isAvailable:{
+         type:Boolean, 
+         require: true, 
+         default: true
+     }
+,
      reviews : [reviewSchema]
 
 } , {

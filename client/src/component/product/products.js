@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Rating from "react-rating";
+import './product.css'
 
 export default function Products({ product }) {
   return (

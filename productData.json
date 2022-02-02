@@ -1,0 +1,99 @@
+  [
+      {
+  
+    "rating": 5,
+    "reviews" : [],
+    "price": 4.90,
+    "countInStock": 4,
+    "name": "orange",
+    "category": "fruits",
+    "image": "https://hashuka.co.il/image/cache/catalog/small_Juice_oreng-228x228.jpg",
+    "description": "Fresh orange",
+    "isAvailable": true
+    
+  }, {
+    "rating": 3,
+    "reviews" : [],
+    "price": 6.90,
+    "countInStock": 20,
+    "name": "Banana",
+    "category": "fruits",
+    "image": "https://hashuka.co.il/image/cache/catalog/1160650-228x228.jpg",
+    "description": "Fresh Banana"
+
+  }, 
+  {
+    "rating": 3,
+    "reviews" : [],
+    "price": 7.90,
+    "countInStock": 10,
+    "name": "coconut",
+    "category": "fruits",
+    "image": "https://hashuka.co.il/image/cache/catalog/coconut-228x228.jpg",
+    "description": "Fresh coconut"
+
+  }, 
+{
+    "rating": 5,
+    "reviews" : [],
+    "price": 3.90,
+    "countInStock": 50,
+    "name": "cucumber",
+    "category": "vegetables",
+    "image": "https://hashuka.co.il/image/cache/catalog/qcumber-228x228.jpg",
+    "description": "Fresh cucumber" 
+},
+{
+    "rating": 2,
+    "reviews" : [],
+    "price": 13,
+    "countInStock": 50,
+    "name": "cauliflower",
+    "category": "vegetables",
+    "image": "https://hashuka.co.il/image/cache/catalog/1160141-228x228.jpg",
+    "description": "Fresh cauliflower", 
+    "isAvailable":false
+}, 
+{
+    "rating": 5,
+    "reviews" : [],
+    "price": 2.90,
+    "countInStock": 50,
+    "name": "tomato",
+    "category": "vegetables",
+    "image": "https://hashuka.co.il/image/cache/catalog/1160286-228x228.jpg",
+    "description": "Fresh tomato" 
+}, 
+{
+    "rating": 5,
+    "reviews" : [],
+    "price": 20,
+    "countInStock": 10,
+    "name": "Olive oil",
+    "category": "Related Products",
+    "image": "https://hashuka.co.il/image/cache/catalog/8001250250018-228x228.png",
+    "description": "bla bla bla" ,
+    "isAvailable": true
+}, 
+{
+    "rating": 5,
+    "reviews" : [],
+    "price": 20,
+    "countInStock": 50,
+    "name": "Tea infusion",
+    "category": "Related Products",
+    "image": "https://hashuka.co.il/image/cache/catalog/7290012637322-228x228.jpg",
+    "description": "Berry flavored tea infusion", 
+    "isAvailable":false 
+}, 
+{
+    "rating": 5,
+    "reviews" : [],
+    "price": 25,
+    "countInStock": 50,
+    "name": "Coffee capsules",
+    "category": "Related Products",
+    "image": "https://hashuka.co.il/image/cache/catalog/8003866016538-228x228.jpg",
+    "description": "Coffee capsules" 
+}
+]

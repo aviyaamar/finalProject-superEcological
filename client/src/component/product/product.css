@@ -1,0 +1,13 @@
+.text-left{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 22rem;
+    /* height: 100%; */
+    max-width: 300px;
+    margin: 3rem;
+    padding: 4rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem #aaa;
+  }

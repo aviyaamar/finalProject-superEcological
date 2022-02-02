@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts  } from '../actions/productActions';
-import Products from '../component/products';
+import Products from '../component/product/products';
+import { addToCart } from "../actions/cartActions";
+import Api from '../Api/Api'
+import '../App.css'
+
 // import Api from '../Api/Api'
 // import axios from 'axios';
 
 const Train = () => {
+  
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const handleClick = (category) => setSelectedCategory(category);
+
     const getallproductsstate = useSelector(
         (state) =>state.getAllProductsReducer
       );
@@ -18,16 +26,23 @@ const Train = () => {
         dispatch(getAllProducts());
       }, []);
 
+      // const displayCategories = async() =>{
+      //   const res = await Api.get('products')
+      //   console.log(res.data);
+      //   setCategories(res.data)
+
+      // }
+
       return (
         <div>
-          <div className="row justify-content-center mt-5 ml-2 mr-2">
+          <div >
             {loading ? (
               <h1>loadin...</h1>
             ) : error ? (
               <h1>Something went wrong...</h1> 
             ) : (
                products.map(product=>{
-                   return <div key={product._id} className='col-md-3 m-2 p-2 shadow p-3 mb-5 bg-white rounded card'>
+                   return <div className='products' key={product._id} >
                        <Products product={product}/>
                    </div>
                })
