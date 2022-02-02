@@ -22,5 +22,8 @@ const auth = async (req, res, next) => {
     res.status(400).send({ error: "please authenticate" });
   }
 };
+const isAdmin  = () =>{
+  
+}
 
 module.exports = auth;

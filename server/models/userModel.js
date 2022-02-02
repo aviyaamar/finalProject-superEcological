@@ -33,7 +33,13 @@ const userSchema = mongoose.Schema({
             type: String,
             required: true,
           },
-        }]
+        }],
+        isAdmin:{
+          requirerd: true, 
+          type: Boolean,
+          default: false 
+
+        }
 })
 
 userSchema.methods.generateAuthToken = async function () {

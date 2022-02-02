@@ -1,51 +1,76 @@
+
 import { useState } from 'react';
-import Api from '../Api/Api';
+import {useDispatch , useSelector} from 'react-redux'
+import {loginUser } from '../actions/userActions'
 
 const Login = () => {
+    const loginReducer = useSelector(state=>state.loginReducer )
+    const {loading , error , success} = loginReducer 
+
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [showMessage, setShowMessage] = useState(false);
-    const [isCancelActive, setIsCancelActive] = useState(true);
+    const [message, setMessage] = useState('')
 
-    const handleSubmission = async () => {
-      try {
-          setIsCancelActive(false);
-          const res = await Api.post('users/login', {
-              password: password.toString(),
-              email
-          });
-          localStorage.setItem('name', res.data.user.name)
-          localStorage.setItem('token', res.data.token)
-          localStorage.setItem('id', res.data.user._id)
-      } catch (e) {
-          if (!showMessage) {
-              setShowMessage(true);
-              setTimeout(() => {
-                  setShowMessage(false)
-                  setIsCancelActive(true);
-              }, 2000)
-          }
-      }
-  }
-return(
-    <div>
-        <h2>Welcome Back</h2>
-            <br></br>
-            <h3>Email</h3>
-            <input value={email} onChange={(e) => setEmail(e.target.value)}/>
-            <h3>Password</h3>
-            <input value={password} onChange={(e) => setPassword(e.target.value.split(' '))} />
-            <div>
-                <button type='button' onClick={() => { handleSubmission() }}>Submit</button>
-               {/* <button  className='glow-card-button' type='button' onClick={() => { isCancelActive  }}>Cancel</button> */}
+    const dispatch = useDispatch()
+
+
+    const handleSubmission = async (e) => {
+        e.preventDefault()
+        const user={
+            email : email , 
+            password : password
+        }
+        dispatch(loginUser(user))
+    }
+
+    return (
+        <div>
+        <div className="row justify-content-center m-3">
+          <div className="col-md-4 card p-3 shadow p-3 mb-5 bg-white rounded" style={{ marginTop: "100px" }}>
+            <div className="div">
+              <h2 className="text-center m-3" style={{display: "inline"}}>LOGIN</h2>
+               <i style={{fontSize:'25px'}} className="fa fa-sign-in" aria-hidden="true"></i>
+  
+              {error && (<h1>'Invalid Credentials'</h1> )}
+              {loading && (<h1>Loading...</h1>)}
+  
+                <form onSubmit={handleSubmission}>
+             
+              <input
+                type="text"
+                placeholder="email"
+                className="form-control"
+                value={email}
+                required
+                onChange={(e) => {
+                setEmail(e.target.value);
+                }}
+              />
+  
+              <input
+                type="password"
+                placeholder="password"
+                className="form-control"
+                value={password}
+                required
+                onChange={(e) => {
+                    setPassword(e.target.value);
+                }}
+              />
+              <div className="text-right">
+                <button type='submit' className="btn mt-3">
+                  LOGIN
+                </button>
+              </div>
+                </form>
+  
+              
             </div>
-            <br />
-            {!showMessage && < br />}
-            {showMessage && <h4 className='glow-card-h3'>Wrong input please try again</h4>}
+            
+            <a style={{color:'black'}} href="/register" className='mt-3'>Click Here To Register</a>
+          </div>
         </div>
-   
-)
+      </div>
+    );
 }
-
-
 export default Login;

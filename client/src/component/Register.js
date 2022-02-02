@@ -1,79 +1,106 @@
-import { useState } from 'react';
-import Api from '../Api/Api'
-// import './sign.css'
 
-const Sign = () => {
+import { useState } from 'react';
+import {useDispatch , useSelector} from 'react-redux'
+import {registerNewUser} from '../actions/userActions'
+
+const Register = () => {
+    const registerState = useSelector(state=>state.registerNewUserReducer)
+    const {loading , error , success} = registerState
+
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [name, setUserName] = useState('');
     const [email, setEmail] = useState('');
-    const [showMessage, setShowMessage] = useState(false);
+   // const [showMessage, setShowMessage] = useState(false);
     const [message, setMessage] = useState('')
 
+    const dispatch = useDispatch()
 
-    const handleSubmission = async () => {
-        if (passwordConfirm !== password) {
-            setShowMessage(true)
-            setMessage('Your password conformation is in currect')
-            setTimeout(() => {
-                setShowMessage(false)
-            }, 2000)
-        } else if (password.length < 8) {
-            setShowMessage(true)
-            setMessage('Your password must be at least 8 digits')
-            setTimeout(() => {
-                setShowMessage(false)
-            }, 2000)
-        } else {
-            try {
-                const res = await Api.post('users/register', {
-                    password: password.toString(),
-                    email,
-                    name
-                })
-                localStorage.clear()
-                localStorage.setItem('name', res.data.user.name)
-                localStorage.setItem('token', res.data.token)
-               
-            } catch (e) {
-                setMessage('Error in email Check the spelling and make sure you are not already registered')
-                setShowMessage(true)
-                setTimeout(() => {
-                    setShowMessage(false)
-                }, 2000)
-            }
+
+    const handleSubmission = async (e) => {
+        e.preventDefault()
+        const user={
+            name : name ,
+            email : email , 
+            password : password
+        }
+        if(password==passwordConfirm)
+        {
+            dispatch(registerNewUser(user))
+        }
+        else{
+            setMessage('password not matched')
         }
     }
 
-
     return (
-        <div className='glow-card-background'>
-         <h3>Write your user name</h3>
-                <input value={name}
-                    onChange={(e) => setUserName(e.target.value)} />
-                <h3>Enter your Email</h3>
-                <input
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}/>
-                <h3>Choose password</h3>
-                <input value={password}
-                    onChange={(e) => setPassword(e.target.value)} />
-                <h3>Confirm your password</h3>
-                <input value={passwordConfirm}
-                    onChange={(e) => setPasswordConfirm(e.target.value)} />
-                <br></br>
-                {!showMessage && <div>
-                    <button type='button' onClick={() => handleSubmission()}>Submit</button>
-                    <button type='button' onClick={() => { 
-                        setPassword('')
-                        setEmail('')
-                            }}
-                    >Cancel</button>
-                </div>}
+        <div>
+      <div className="row justify-content-center m-3">
+        <div className="col-md-5 card p-3 shadow p-3 mb-5 bg-white rounded" style={{ marginTop: "100px" }}>
+          <div className="div">
+            <h2 style={{display: "inline"}} className="text-center m-3">Register</h2>
+            <i style={{fontSize:'25px'}} className="fa fa-user-plus" aria-hidden="true"></i>
 
-                {showMessage && <h4 className='glow-card-h3 font-orange-shadow-red'>{message}</h4> }
+            {loading && (<h1>Loading ...</h1>)}
+            {error && (<h1>'Email Address is already registred'</h1> )}
+            {success && (<h1>'Your Registration is successfull'</h1> )}
+
+              <form onSubmit={handleSubmission}>
+              <input
+              type="text"
+              placeholder="name"
+              className="form-control"
+              required
+              value={name}
+              onChange={(e) => {
+                setUserName(e.target.value);
+                
+              }}
+            />
+            <input
+              type="text"
+              placeholder="email"
+              className="form-control"
+              value={email}
+              required
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+
+            <input
+              type="password"
+              placeholder="password"
+              className="form-control"
+              value={password}
+              required
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+
+            <input
+              type="password"
+              placeholder="confirm password"
+              className="form-control"
+              value={passwordConfirm}
+              required
+              onChange={(e) => {
+                setPasswordConfirm(e.target.value);
+              }}
+            />
+
+            <div className="text-right">
+              <button type='submit' className="btn mt-3">
+                REGISTER
+              </button>
             </div>
-      
-    )
+              </form>
+          </div>
+          <a style={{color: 'black'}} href="/login" className='m-3'>Click Here To Login</a>
+        </div>
+      </div>
+    </div>
+  );
 }
-export default Sign;
+export default Register;
