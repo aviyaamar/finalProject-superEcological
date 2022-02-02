@@ -5,15 +5,12 @@ import Products from '../component/product/products';
 import { addToCart } from "../actions/cartActions";
 import Api from '../Api/Api'
 import '../App.css'
+import Filter from '../component/Filter';
 
 // import Api from '../Api/Api'
 // import axios from 'axios';
 
 const Train = () => {
-  
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const handleClick = (category) => setSelectedCategory(category);
-
     const getallproductsstate = useSelector(
         (state) =>state.getAllProductsReducer
       );
@@ -25,16 +22,13 @@ const Train = () => {
       useEffect(() => {
         dispatch(getAllProducts());
       }, []);
-
-      // const displayCategories = async() =>{
-      //   const res = await Api.get('products')
-      //   console.log(res.data);
-      //   setCategories(res.data)
-
-      // }
+ 
+     
+     
 
       return (
         <div>
+          <Filter/>
           <div >
             {loading ? (
               <h1>loadin...</h1>
@@ -48,6 +42,7 @@ const Train = () => {
                })
             )}
           </div>
+       
         </div>
       );
     }
