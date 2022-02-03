@@ -5,6 +5,7 @@ const cors = require('cors');
 const userRouter = require('./server/router/userRouter')
 const productRouter = require('./server/router/productRouter')
 const categoriesRouter = require('./server/router/catgoeyRouter')
+const orderRouter = require('./server/router/orderRouter')
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(userRouter);
 app.use(productRouter);
 app.use(categoriesRouter)
+app.use(orderRouter)
 
 
 
