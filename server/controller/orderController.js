@@ -1,6 +1,7 @@
 const {v4 : uuidv4} = require('uuid')
 const stripe = require("stripe")("sk_test_51KOtZqD4qV6Z4BeWnJodermUjDzrJaOV1zUnOh33RITCGsClGerdUvHk20iuQMDAsOqSVBburhieyRQCaEOKZgGD00zXKXVYUJ")
 const Order = require('../models/orderModel')
+
 const addPayment = async(req,res)=>{
     const {token, cartItems, currentUser, subtotal}= req.body
    
@@ -35,23 +36,49 @@ const addPayment = async(req,res)=>{
 
         })
         order.save(err=>{
-
-            if(err)
-            {
+            if(err){
                 return res.status(400).send({ message: 'Something went wrong' });
-            }
-            else{
+            }else{
                 res.send('Order Placed Successfully')
             }
-
         })
-    }
-    else{
+    }else{
         return res.status(400).send({ message: 'Payment failed' });
     }
+}
+
+const getOrderById = async(req, res) => {
+
+    const orderid = req.body.orderid
+    try{
+        
+   const orderID = await Order.find({_id: orderid})
+      return res.send(orderID[0])
+
+
+    }catch(e){
+        return res.status(400).send(e);
+    } 
+}
+
+const addOrderByUserID = async(req, res)=>{
+    const userid = req.body.userid
+  
+    Order.find({userid : userid} , (err , docs)=>{
+
+        if(err){
+            return res.status(400).json({ message: 'something went wrong' });
+        }
+        else{
+           return res.send(docs)
+        }
+
+    })
   
 }
 
 module.exports = {
    addPayment, 
+   addOrderByUserID, 
+   getOrderById
 }
