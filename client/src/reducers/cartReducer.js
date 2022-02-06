@@ -9,7 +9,6 @@ export const cartReducer=(state={cartItems : []} , action)=>{
                 ...state ,
                 cartItems : state.cartItems.map((item) => item._id === action.payload._id ? action.payload : item)
             }
-
         }
         else{
             return {
@@ -26,12 +25,35 @@ export const cartReducer=(state={cartItems : []} , action)=>{
               cartItems : state.cartItems.filter(item=> {return item._id !==action.payload._id})
 
         }
-
-    
-        
-
         default : return state
     }
-
-
 }
+
+// export const addToFavorite=(state={cartItems : []} , action)=>{
+//     switch(action.type) {
+//         case 'ADD_TO_FAVORITE' : 
+//         const alreadyexist = state.cartItems.find(item => item._id === action.payload._id)
+//         if(alreadyexist) {
+//             return {
+//                 ...state ,
+//                 cartItems : state.cartItems.map((item) => item._id === action.payload._id ? action.payload : item)
+//             }
+//         }
+//         else{
+//             return {
+//                 ...state ,
+//                 cartItems : [...state.cartItems , action.payload]
+ 
+//          }
+
+//         }
+
+//         case 'DELETE_FROM_FAVORITE' : return{
+
+//               ...state , 
+//               cartItems : state.cartItems.filter(item=> {return item._id !==action.payload._id})
+
+//         }
+//         default : return state
+//     }
+// }

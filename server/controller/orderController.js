@@ -9,6 +9,17 @@ const addPayment = async(req,res)=>{
         email: token.email, 
         source: token.id
     })
+    // const invoiceItem = await stripe.invoiceItems.create({
+    //     customer: customer.id ,
+    //     amount: subtotal*100,
+    //   });
+    //   const invoice = await stripe.invoices.create({
+    //     customer: customer.id ,
+    //     collection_method: 'send_invoice',
+    //     days_until_due: 30,
+    //   });
+
+ 
     const payment = await stripe.charges.create({
         amount: subtotal*100, 
         currency : 'ILS' , 

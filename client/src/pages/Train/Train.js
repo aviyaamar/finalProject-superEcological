@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts  } from '../actions/productActions';
-import Products from '../component/product/products';
-import { addToCart } from "../actions/cartActions";
-import Api from '../Api/Api'
-import '../App.css'
-import Filter from '../component/Filter';
+import { getAllProducts  } from '../../actions/productActions';
+import Products from '../../component/product/products';
+import Loader from '../../component/Loading/Loading'
 
-// import Api from '../Api/Api'
-// import axios from 'axios';
+import Filter from '../../component/Filter/Filter';
+import Home from '../Home/Home'
+import './Train.css'
 
 const Train = () => {
     const getallproductsstate = useSelector(
@@ -27,16 +25,15 @@ const Train = () => {
      
 
       return (
-        <div>
+        <div className="App">
+          <Home/>
           <Filter/>
-          <div >
-            {loading ? (
-              <h1>loadin...</h1>
-            ) : error ? (
+          <div className='products'>
+            {loading ? (<Loader/>) : error ? (
               <h1>Something went wrong...</h1> 
             ) : (
                products.map(product=>{
-                   return <div className='products' key={product._id} >
+                   return <div className='' key={product._id} >
                        <Products product={product}/>
                    </div>
                })

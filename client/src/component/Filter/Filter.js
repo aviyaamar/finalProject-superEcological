@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useDispatch } from "react-redux";
-import { filterProducts} from "../actions/productActions";
+import { filterProducts} from "../../actions/productActions";
+import './Filter.css'
 
 
 
@@ -14,8 +15,8 @@ const Filter = () => {
   
   return (
     <div>
-    <div className="row justify-content-center shadow p-3 mb-5 bg-white rounded">
-      <div className="col-md-3 ml-2" style={{marginTop:'13px'}}>
+    <div className="container_filter ">
+      <div className="filter search" >
         <input
           value={searchkey}
           onChange={(e) => {
@@ -23,18 +24,20 @@ const Filter = () => {
           }}
           type="text"
           placeholder="search products"
-          className="form-control"
+          className="form-search"
         />
       </div>
 
       <div className="col-md-2 mt-4 ml-2">
         <select
-          className="form-control"
+          className="form-search"
           value={sort}
+         
           onChange={(e) => {
             setsort(e.target.value);
           }}
         >
+          
           <option value="popular">Popular</option>
           <option value="htl">high to Low</option>
           <option value="lth">Low To High</option>
@@ -43,7 +46,7 @@ const Filter = () => {
 
       <div className="col-md-2 mt-4 ml-2">
         <select
-          className="form-control"
+          className="form-search"
           value={category}
           onChange={(e) => {
             setcategory(e.target.value);
@@ -53,11 +56,9 @@ const Filter = () => {
           <option value="fruits">fruits</option>
           <option value="vegetables">vegetables</option>
           <option value="Related Products">Related Products</option>
-          {/* <option value="games">Games</option> */}
         </select>
-        <div className="col-md-2 mt-4 ml-2">
-        <button className="btn" onClick={()=>{dispatch(filterProducts(searchkey , sort , category))}}>FILTER</button>
-      </div>
+ 
+        <button className="form-search button-search" onClick={()=>{dispatch(filterProducts(searchkey , sort , category))}}>FILTER</button>
         </div>
         
 

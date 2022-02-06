@@ -1,7 +1,7 @@
 .navbar{
     display: flex;
     flex-wrap:  wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items:  center;
     padding: 0 2rem;
     height: 5%;
@@ -12,8 +12,8 @@
 
 .linksNav{
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   position: relative;  
 }
 .link{
@@ -21,13 +21,13 @@
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    color: #be897f;
-    font-size: 1.1rem;
+    color: #073a31;
+    font-size: 1.4rem;
     font-weight: 800;
 }
 .link:hover{
     border-radius: 5px;
-    opacity: 0.9;
+    opacity: 0.6;
 }
 .logo{
     /* //background-image: url('./logo.png'); */

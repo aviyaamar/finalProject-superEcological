@@ -6,6 +6,7 @@ export const registerNewUser  = (user)=>{
     try{
         const result= await Api.post('/users/register', user)
         dispatch({type:'USER_REGISTER_SUCCESS',  payload: result})
+        window.location.href='/'
         console.log(result);
      }catch(err){
          dispatch({type:'USER_REGISTER_FAILED' , payload : err})

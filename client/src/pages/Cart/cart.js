@@ -1,8 +1,12 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { addToCart , deleteFromCart } from '../actions/cartActions'
-import Checkout from '../component/Checkout'
-
+import {Link} from 'react-router-dom'
+import { addToCart , deleteFromCart } from '../../actions/cartActions'
+import Checkout from '../../component/Checkout'
+import Home from '../Home/Home'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import './cart.css'
 
 export default function Cartscreen() {
     const cartreducerstate = useSelector(state=>state.cartReducer)
@@ -10,16 +14,18 @@ export default function Cartscreen() {
     const {cartItems} = cartreducerstate
 
     var subtotal = cartItems.reduce((acc , item) => acc + (item.price*item.quantity) , 0) 
+    const Trash = <FontAwesomeIcon style={{'height':'20px', 'width':'20px'}} icon={faTrash}/>
+
 
     return (
         <div>
-            
-            <div className="row mt-3 justify-content-center">
-
+            <Home/>
+            <div className="detail_Cart">
                  <div className="col-md-8 card text-center shadow p-3 mb-5 bg-white rounded">
-                     <h2 className='text-center m-5'>MY CART</h2>
+                     <div>
+                     <h2 className='text-center m-5'>MY CART</h2><span><Link className='AddTOCart' to='/'>continue shopping</Link></span>
+                     </div>
                      <table className='table table-bordered table-responsives-sm'>
-
                       <thead>
                       <tr>
                            <th>Name</th>
@@ -36,18 +42,18 @@ export default function Cartscreen() {
 
                             return <tr>
                                 <td>{item.name}</td>
-                                <td>{item.price}</td>
+                                <td>{item.price} &#8362;</td>
                                 <td><select value={item.quantity} onChange={(e)=>{dispatch(addToCart(item , e.target.value))}}>
                                     
                                     {[...Array(item.countInStock).keys()].map((x , i)=>{
 
-                                          return <option value={i+1}>{i+1}</option>
+                                          return <option value={i+0.5}>{i+0.5}KG</option>
 
                                     })}
                                     
                                     </select></td>
-                                <td>{item.quantity * item.price}</td>
-                                <td><i style={{color:'red'}} className="far fa-trash-alt" onClick={()=>{dispatch(deleteFromCart(item))}}>delet</i> </td>
+                                <td>{item.quantity * item.price} &#8362;</td>
+                                <td><i style={{color:'red'}} className="far fa-trash-alt" onClick={()=>{dispatch(deleteFromCart(item))}}>{Trash}</i> </td>
                             </tr>
 
                           })}
@@ -55,22 +61,10 @@ export default function Cartscreen() {
                       </tbody>
 
                      </table>
-
-                     <hr/>
-
-
-                     <h2 className='text-center'>SubTotal : {subtotal} sh</h2>
-
-                     <hr/>
-
-                    
+                     <h2 className='text-center'>SubTotal : {subtotal} &#8362;</h2>   
                      <Checkout amount={subtotal}/>
-                   
-
                  </div>
-
             </div>
-
         </div>
     )
 }

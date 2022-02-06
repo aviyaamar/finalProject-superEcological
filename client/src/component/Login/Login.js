@@ -1,7 +1,16 @@
 
 import { useState } from 'react';
 import {useDispatch , useSelector} from 'react-redux'
-import {loginUser } from '../actions/userActions'
+import {loginUser } from '../../actions/userActions'
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
+import Loader from '../Loading/Loading'
+
+
+
+import './Login.css'
+
 
 const Login = () => {
     const loginReducer = useSelector(state=>state.loginReducer )
@@ -9,8 +18,12 @@ const Login = () => {
 
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('')
+    const [passwordShown, setPasswordShown] = useState(false);
+  
+    const togglePassword = () => {
 
+      setPasswordShown(!passwordShown);
+    };
     const dispatch = useDispatch()
 
 
@@ -22,55 +35,68 @@ const Login = () => {
         }
         dispatch(loginUser(user))
     }
+    const eye = <FontAwesomeIcon icon={faEye} />;
 
     return (
-        <div>
-        <div className="row justify-content-center m-3">
-          <div className="col-md-4 card p-3 shadow p-3 mb-5 bg-white rounded" style={{ marginTop: "100px" }}>
+        <div className='hero'>
+        <div className="form" id='login'>
+          <div className="con" >
             <div className="div">
-              <h2 className="text-center m-3" style={{display: "inline"}}>LOGIN</h2>
+              <h2 className="company">LOGIN</h2>
                <i style={{fontSize:'25px'}} className="fa fa-sign-in" aria-hidden="true"></i>
   
               {error && (<h1>'Invalid Credentials'</h1> )}
-              {loading && (<h1>Loading...</h1>)}
+              {loading && (<Loader/>)}
   
-                <form onSubmit={handleSubmission}>
-             
-              <input
+              <form onSubmit={handleSubmission}>
+         
+              <input className="inputTxt"
                 type="text"
                 placeholder="email"
-                className="form-control"
+            
                 value={email}
                 required
                 onChange={(e) => {
                 setEmail(e.target.value);
                 }}
-              />
+              /><br/>
   
-              <input
-                type="password"
+             <div className="pwd">
+              <input className="inputTxt"
+                type={passwordShown ? "text" : "password"}
                 placeholder="password"
-                className="form-control"
+                id="pwd"
                 value={password}
                 required
                 onChange={(e) => {
                     setPassword(e.target.value);
-                }}
+                }}  
               />
+              <span class="input-item"> <i style={{'height':'100px', 'width':'100px'}} onClick={togglePassword}>{eye}</i>{" "}</span>
+              </div>
+             
+
               <div className="text-right">
-                <button type='submit' className="btn mt-3">
+                <button className="btn" type='submit' className="btn mt-3">
                   LOGIN
                 </button>
+              
               </div>
+              <span><Link className='btn other' to='/register'>Sing Up</Link> </span> 
                 </form>
   
               
             </div>
             
-            <a style={{color:'black'}} href="/register" className='mt-3'>Click Here To Register</a>
+         
           </div>
+        
         </div>
       </div>
+      
     );
+
+
+    
 }
 export default Login;

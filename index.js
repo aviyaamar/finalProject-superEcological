@@ -1,11 +1,18 @@
 const express = require('express')
 require('./server/db/mongoose')
 const cors = require('cors');
+const dotenv = require("dotenv");
 
 const userRouter = require('./server/router/userRouter')
 const productRouter = require('./server/router/productRouter')
 const categoriesRouter = require('./server/router/catgoeyRouter')
 const orderRouter = require('./server/router/orderRouter')
+const pointRouter = require('./server/router/pointRouter')
+
+dotenv.config();
+console.log(process.env.REACT_APP_MAPBOX);
+
+
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -20,6 +27,7 @@ app.use(userRouter);
 app.use(productRouter);
 app.use(categoriesRouter)
 app.use(orderRouter)
+app.use(pointRouter)
 
 
 

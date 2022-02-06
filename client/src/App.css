@@ -8,10 +8,3 @@ box-sizing: border-box;
 .App{
   width:100vw
 }
-.products{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-}
