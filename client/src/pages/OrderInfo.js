@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderById } from "../actions/orderActions";
-// import Error from "../components/Error";
-// import Loader from "../components/Loader";
+import Loader from "../component/Loading/Loading";
+import Error from '../component/Error/Error'
 export default function Orderinfo({ match }) {
   const dispatch = useDispatch();
   const orderstate = useSelector((state) => state.getOrderByIdReducer);
@@ -15,8 +15,8 @@ export default function Orderinfo({ match }) {
   }, [dispatch]);
   return (
     <div>
-      {error && <h1>"Something went wrong" </h1>}
-      {loading && <h1>Loading...</h1>}
+      {error && (<Error/>)}
+      {loading && (<Loader/>)}
       {order && (
         <div>
           <div className="row justify-content-center">

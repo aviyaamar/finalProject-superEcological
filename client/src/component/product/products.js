@@ -1,17 +1,19 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../actions/cartActions";
-import {addToFavorite} from '../../actions/cartActions'
+import { addToCart, addToFavorite } from "../../actions/cartActions";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {faHeart} from '@fortawesome/free-solid-svg-icons'
 
 import './product.css'
 
+
  function Products({ product }) {
   const dispatch = useDispatch();
   const [quantity, setquantity] = useState(1);
+  // const [isAvailable, setIsAvailabel]= useState(true)
 
   function addtocart() {
     dispatch(addToCart(product, quantity));
@@ -24,7 +26,7 @@ import './product.css'
     <div  className="container">
       <div className="text-left" >
         <Link className="text-details" to={`product/${product._id}`}>
-         <div className='text-center'>
+         <div key={product._id} className='text-center'>
          <img src={product.image} className="img-fluid" style={{'width':'150px' ,'height':'150px'}} />
          </div>
          <div className="titles">
@@ -34,6 +36,7 @@ import './product.css'
          </div>
           
         </Link>
+    
         <div className="quan">
           <div  className="quantity">
         {/* <h1>Select Quantity</h1> */}
@@ -44,15 +47,16 @@ import './product.css'
         }}
          >
         {[...Array(product.countInStock).keys()].map((x, i) => {
-         return <option value={i + 0.5}>{i + 0.5}kg</option>;
+         return <option key={x} value={i + 0.5}>{i + 0.5}kg</option>;
          })}
          </select>
          
          </div>
-        {product.countInStock > 0 ? (<button className="AddTOCart" onClick={addtocart}> ADD TO CART</button>) : (
+        {product.isAvailable ===  true ? (<button className="AddTOCart" onClick={addtocart}> ADD TO CART</button>) : (
         <div>
-          <h1>Out Of StocK</h1>
+          <h5>Out Of StocK</h5>
        <button className="AddTOCart" disabled onClick={addtocart}>ADD TO CART</button></div>)}
+     
       </div>
         </div>
       </div>

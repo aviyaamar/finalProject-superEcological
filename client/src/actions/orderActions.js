@@ -54,6 +54,20 @@ export const getOrderById=(orderid)=>(dispatch , getState)=>{
          dispatch({type:'GET_ORDERBYID_FAILED' , payload:err})
 
      })
+}
+export const getAllOrders=()=>(dispatch , getState)=>{
+
+     dispatch({type:'GET_ALLORDERS_REQUEST'})
+
+     Api.get('/order/getallorders').then(res=>{
+
+          dispatch({type:'GET_ALLORDERS_SUCCESS' , payload:res.data})
+          console.log(res.data);
+
+     }).catch(err=>{
+         dispatch({type:'GET_ALLORDERS_FAILED' , payload:err})
+
+     })
 
 
 }

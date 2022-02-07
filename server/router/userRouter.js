@@ -44,9 +44,9 @@ router.post('/users/logout', auth, async (req, res) => {
     }
 })
 
-router.put('/me', auth, async (req, res) => {
+router.put('/users/update',   (req, res) => {
     //update user
-    await userController.updateUser(req, res);
+     userController.updateUser(req, res);
 })
 
 router.delete("/me", auth, async (req, res) => {
@@ -60,5 +60,7 @@ router.delete("/", (req, res) => {
 router.get("/users/:id", async (req, res) => {
     userController.getUser(req, res)
 })
-
+router.post('/users/deleteuser', (req, res)=>{
+    userController.deleteUserFromList(req, res)
+})
 module.exports = router; 

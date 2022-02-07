@@ -8,28 +8,31 @@ import Home from "./pages/Home/Home";
 import Cartscreen from "./pages/Cart/cart";
 import Order from "./pages/order";
 import Orderinfo from './pages/OrderInfo'
+import Profile from "./pages/Profile/Profile";
+import Admin from "./pages/Admin/Admin";
+import Error from './component/Error/Error'
+import Success from './component/Error/Succes'
 // import MapBox from "./component/Map.js/MapBox";
 // import Mapo from './component/Map.js/map'
 
 
 const App = ()=>{
-
-
-
   return (
     <div>
       <BrowserRouter>
       <Navbar/>
-      {/* <Home/> */}
       <Switch>
     
       <Route path='/' exact component={Train}/>
       <Route path='/cart' exact component={Cartscreen}/>
       <Route path='/register' exact component={Register}/>
       <Route path='/login' exact component={Login}/>
-      <Route path='/order' exact component={Order}></Route>
+      <Route path='/order' exact component={Order}/>
       <Route path='/orderinfo/:orderid' component={Orderinfo} />
-      {/* <Route path='/map' exact component={MapBox}/> */}
+      <Route path='/profile' exact component={Profile}/>
+      <Route path='/admin' exact component={Admin}/>
+      <Route path='/Error' exact component={Error}/>
+      <Route path='/Success' exact component={Success}/>
     </Switch>
     </BrowserRouter>
     </div>

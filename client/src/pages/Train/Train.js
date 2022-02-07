@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts  } from '../../actions/productActions';
 import Products from '../../component/product/products';
 import Loader from '../../component/Loading/Loading'
+import Error from '../../component/Error/Error'
+import Succes from '../../component/Error/Succes'
 
 import Filter from '../../component/Filter/Filter';
 import Home from '../Home/Home'
@@ -29,9 +31,7 @@ const Train = () => {
           <Home/>
           <Filter/>
           <div className='products'>
-            {loading ? (<Loader/>) : error ? (
-              <h1>Something went wrong...</h1> 
-            ) : (
+            {loading ? (<Loader/>) : error ? (<Error/>) : (
                products.map(product=>{
                    return <div className='' key={product._id} >
                        <Products product={product}/>

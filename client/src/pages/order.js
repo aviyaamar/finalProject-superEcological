@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrdersByUserId } from "../actions/orderActions";
-// import Loader from "../components/Loader";
-// import Error from '../components/Error'
+import Loader from "../component/Loading/Loading";
+import Error from '../component/Error/Error'
 // import { Link } from "react-router-dom";
 
 const Order =()=>{
@@ -41,7 +41,7 @@ const Order =()=>{
 
             <tbody>
 
-                  {loading && (<h1>Loading...</h1>)}
+                  {loading && (<Loader/>)}
                   {orders && (orders.map(order=>{
                     return <tr onClick={()=>{window.location=`/orderinfo/${order._id}`}}>
                      <td>{order._id}</td>
@@ -54,7 +54,7 @@ const Order =()=>{
                    
                   }))}
 
-                  {error && (<h1>'something went wrong'</h1>)}
+                  {error && (<Error/>)}
 
             </tbody>
 

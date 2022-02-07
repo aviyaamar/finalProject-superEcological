@@ -87,9 +87,21 @@ const addOrderByUserID = async(req, res)=>{
     })
   
 }
+const getAllOrders = async(req, res)=>{
+    try{
+        const orders = await Order.find({})
+        return res.status(201).send(orders)
+    }
+    catch(e)
+    {
+        return res.status(500).send(e)
+    }
+}
+
 
 module.exports = {
    addPayment, 
    addOrderByUserID, 
-   getOrderById
+   getOrderById, 
+   getAllOrders
 }

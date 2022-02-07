@@ -41,3 +41,45 @@ export const logoutUser = ()=>dispatch=>{
     dispatch({type : 'USER_LOGOUT'})
     window.location.href='/login'
 }
+
+export const updateUser=(userid , updateduser)=>dispatch=>{
+    dispatch({type:'USER_UPDATE_REQUEST'})
+   Api.put("users/update" , {userid : userid , updateduser : updateduser})
+     .then(res => {
+        dispatch({type:'USER_UPDATE_SUCCESS'})
+ 
+        console.log(res);
+        window.location.href='/login'
+ 
+     })
+     .catch(err => {
+        dispatch({type:'USER_UPDATE_FAILED' , payload : err})
+        console.log(err);
+ 
+     });
+ 
+ }
+
+ export const getAllUsers=()=>dispatch=>{
+    dispatch({type:'GET_ALLUSERS_REQUEST'})
+    Api.get('users').then(res=>{
+      dispatch({type:'GET_ALLUSERS_SUCCESS' , payload : res.data})
+    }).catch(err=>{
+      dispatch({type:'GET_ALLUSERS_FAILED' , payload : err})
+    })
+}
+
+export const deleteUser=(userid)=>dispatch=>{
+    dispatch({type:'DELETE_USER_REQUEST'})
+    Api.post('users/deleteuser' , {userid}).then(res=>{
+      dispatch({type:'DELETE_USER_SUCCESS' , payload : res.data})
+      alert('User deleted successfully')
+      window.location.href='/admin'
+ 
+    }).catch(err=>{
+      dispatch({type:'DELETE_USER_FAILED' , payload : err})
+ 
+    })
+ 
+ 
+ }
