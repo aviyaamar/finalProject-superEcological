@@ -54,7 +54,7 @@ const Order =()=>{
                    
                   }))}
 
-                  {error && (<Error/>)}
+                  {error && (<Error error='something went wrong'/>)}
 
             </tbody>
 

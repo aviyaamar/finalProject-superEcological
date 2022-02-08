@@ -6,11 +6,9 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import Loader from '../Loading/Loading'
-
-
+import Error from '../Error/Error';
 
 import './Login.css'
-
 
 const Login = () => {
     const loginReducer = useSelector(state=>state.loginReducer )
@@ -19,12 +17,13 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [passwordShown, setPasswordShown] = useState(false);
+
+    const dispatch = useDispatch()
   
     const togglePassword = () => {
-
       setPasswordShown(!passwordShown);
     };
-    const dispatch = useDispatch()
+
 
 
     const handleSubmission = async (e) => {
@@ -45,7 +44,7 @@ const Login = () => {
               <h2 className="company">LOGIN</h2>
                <i style={{fontSize:'25px'}} className="fa fa-sign-in" aria-hidden="true"></i>
   
-              {error && (<h1>'Invalid Credentials'</h1> )}
+              {error && (<Error error='Invalid Credentials'/> )}
               {loading && (<Loader/>)}
   
               <form onSubmit={handleSubmission}>

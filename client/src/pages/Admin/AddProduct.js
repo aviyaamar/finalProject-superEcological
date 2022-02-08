@@ -39,9 +39,9 @@ const AddProduct = () => {
       <div className="row justify-content-center">
         <div className="col-md-8 shadow p-3 mb-5 bg-white rounded">
 
-          {success && (<Succes/>)}
+          {success && (<Succes success='Product Added Succesfully'/>)}
           {loading && (<Loader />)}
-          {error && (<Error/>)}
+          {error && (<Error error='Something went wrong'/>)}
 
           <h2>Add Product</h2>
           <form onSubmit={addproduct}>

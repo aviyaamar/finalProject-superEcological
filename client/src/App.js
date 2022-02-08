@@ -12,6 +12,7 @@ import Profile from "./pages/Profile/Profile";
 import Admin from "./pages/Admin/Admin";
 import Error from './component/Error/Error'
 import Success from './component/Error/Succes'
+import Favorite from './pages/favorite/favorite';
 // import MapBox from "./component/Map.js/MapBox";
 // import Mapo from './component/Map.js/map'
 
@@ -22,7 +23,6 @@ const App = ()=>{
       <BrowserRouter>
       <Navbar/>
       <Switch>
-    
       <Route path='/' exact component={Train}/>
       <Route path='/cart' exact component={Cartscreen}/>
       <Route path='/register' exact component={Register}/>
@@ -33,6 +33,7 @@ const App = ()=>{
       <Route path='/admin' exact component={Admin}/>
       <Route path='/Error' exact component={Error}/>
       <Route path='/Success' exact component={Success}/>
+      <Route path='/favorite' exact component={Favorite}/>
     </Switch>
     </BrowserRouter>
     </div>

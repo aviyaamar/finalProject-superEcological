@@ -51,8 +51,8 @@ const Profile = () => {
             <i style={{fontSize:'25px'}} className="fa fa-user-plus" aria-hidden="true"></i>
 
             {loading && (<Loader/>)}
-            {error && (<Error/> )}
-            {success && (<Succes/> )}
+            {error && (<Error error="Something went wrong"/> )}
+            {success && (<Succes success="Your Details updated succes , please re-login"/> )}
 
               <form onSubmit={handleSubmission}>
               <input

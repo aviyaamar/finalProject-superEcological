@@ -4,19 +4,16 @@ import { getAllProducts  } from '../../actions/productActions';
 import Products from '../../component/product/products';
 import Loader from '../../component/Loading/Loading'
 import Error from '../../component/Error/Error'
-import Succes from '../../component/Error/Succes'
+
 
 import Filter from '../../component/Filter/Filter';
 import Home from '../Home/Home'
 import './Train.css'
 
 const Train = () => {
-    const getallproductsstate = useSelector(
-        (state) =>state.getAllProductsReducer
-      );
-    
-      const { loading, products, error } = getallproductsstate;
-    
+    const getallproductsstate = useSelector((state) =>state.getAllProductsReducer);
+  
+      const { loading, products, error } = getallproductsstate;  
       const dispatch = useDispatch();
     
       useEffect(() => {
@@ -31,7 +28,7 @@ const Train = () => {
           <Home/>
           <Filter/>
           <div className='products'>
-            {loading ? (<Loader/>) : error ? (<Error/>) : (
+            {loading ? (<Loader/>) : error ? (<Error error="Something went wrong"/>) : (
                products.map(product=>{
                    return <div className='' key={product._id} >
                        <Products product={product}/>

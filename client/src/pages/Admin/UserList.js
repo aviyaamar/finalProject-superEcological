@@ -3,7 +3,8 @@ import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { deleteUser, getAllUsers } from '../../actions/userActions'
 import Loader from '../../component/Loading/Loading'
-// import Error from '../components/Error'
+import Error from '../../component/Error/Error'
+import Succes from '../../component/Error/Succes'
 import Home from '../Home/Home'
 
 const UserList = () => {
@@ -35,7 +36,7 @@ const UserList = () => {
 
                 <tbody>
                     {loading && (<Loader/>)}
-                    {error && (<h1>Something went wrong'</h1>)}
+                    {error && (<Error error= 'Something went wrong'/>)}
                     {users && (users.map(user=>{
                         return <tr key={user._id}>
                             <td>{user._id}</td>

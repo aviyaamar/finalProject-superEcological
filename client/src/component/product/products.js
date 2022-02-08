@@ -30,12 +30,13 @@ import './product.css'
          <img src={product.image} className="img-fluid" style={{'width':'150px' ,'height':'150px'}} />
          </div>
          <div className="titles">
-         <button className="heart" onClick={addToFavorite}>{heart}</button>
+
          <h1>{product.name}</h1>
           <h3>Price : {product.price} <span>&#8362;  KG</span></h3>
          </div>
           
         </Link>
+        <button className="heart" onClick={addtocart}>{heart}</button>
     
         <div className="quan">
           <div  className="quantity">

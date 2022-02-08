@@ -1,39 +1,16 @@
 import React from 'react';
 import './Error.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCheck} from '@fortawesome/free-solid-svg-icons'
 
-const Success = () => {
+const Success = ({ success }) => {
+
+  const  check = <FontAwesomeIcon icon={faCheck}/>
   return(
-      <div>
-    <div id="container">
-    <div id="success-box">
-      <div class="dot"></div>
-      <div class="dot two"></div>
-      <div class="face">
-        <div class="eye"></div>
-        <div class="eye right"></div>
-        <div class="mouth happy"></div>
-      </div>
-      <div class="shadow scale"></div>
-      <div class="message"><h1 class="alert">Success!</h1><p>yay, everything is working.</p></div>
-      <button class="button-box"><h1 class="green">continue</h1></button>
-    </div>
-    {/* <div id="error-box">
-      <div class="dot"></div>
-      <div class="dot two"></div>
-      <div class="face2">
-        <div class="eye"></div>
-        <div class="eye right"></div>
-        <div class="mouth sad"></div>
-      </div>
-      <div class="shadow move"></div>
-      <div class="message"><h1 class="alert">Error!</h1><p>oh no, something went wrong.</p>
-      </div>
-      <button class="button-box"><h1 class="red">try again</h1></button>
-    </div> */}
-  </div>
-  
-  <footer>
-  </footer>
+      <div className='success-msg'>
+   <i className="fa fa-check">{check}</i>
+        {success}
+        this is suceess message
   </div>
   );
 };

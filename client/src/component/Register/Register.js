@@ -4,9 +4,12 @@ import {useDispatch , useSelector} from 'react-redux'
 import {registerNewUser} from '../../actions/userActions'
 import { Link } from 'react-router-dom';
 import Loader from '../Loading/Loading';
+import Success from '../Error/Succes';
+import Error from '../Error/Error';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import '../Login/Login.css'
+
 import './Register.css'
 const Register = () => {
   const eye = <FontAwesomeIcon icon={faEye} />;
@@ -56,8 +59,8 @@ const Register = () => {
             <i style={{fontSize:'25px'}} className="fa fa-user-plus" aria-hidden="true"></i>
 
             {loading && (<Loader/>)}
-            {error && (<h1>'Email Address is already registred'</h1> )}
-            {success && (<h1>'Your Registration is successfull'</h1> )}
+            {error && (<Error error='Email Address is already registred'/> )}
+            {success && (<Success success='Your Registration is successfull'/> )}
 
               <form onSubmit={handleSubmission}>
               <input

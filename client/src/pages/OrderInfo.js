@@ -15,7 +15,7 @@ export default function Orderinfo({ match }) {
   }, [dispatch]);
   return (
     <div>
-      {error && (<Error/>)}
+      {error && (<Error error="Something went wrong" />)}
       {loading && (<Loader/>)}
       {order && (
         <div>

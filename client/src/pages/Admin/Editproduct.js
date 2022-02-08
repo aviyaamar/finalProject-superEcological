@@ -2,9 +2,11 @@ import React from 'react';
 import { getProductById, updateProduct } from "../../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-// import Error from "../components/Error";
+
 import Loader from '../../component/Loading/Loading'
-// import Success from "../components/Success";
+import Error from '../../component/Error/Error'
+import Succes from '../../component/Error/Succes'
+
 
 const Editproduct = ({match}) => {
   const dispatch = useDispatch();
@@ -61,9 +63,9 @@ const Editproduct = ({match}) => {
       {loading && <Loader />}
 
       {updateloading && <Loader />}
-      {updateerror && (<h1>'Something went wrong'</h1> )}
-      {success && (<h1>'Product Updated Successfully'</h1>)}
-      {error && <h1>"something went wrong"</h1>}
+      {updateerror && (<Error error='Something went wrong'/> )}
+      {success && (<Succes success='Product Updated Successfully'/>)}
+      {error && <Error error="something went wrong"/>}
       {product && (
         <div>
           <form onSubmit={editproduct}>

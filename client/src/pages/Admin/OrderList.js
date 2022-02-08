@@ -2,7 +2,8 @@ import React from 'react';
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Loader from '../../component/Loading/Loading'
-// import Error from '../components/Error'
+import Error from '../../component/Error/Error'
+import Succes from '../../component/Error/Succes'
 import { getAllOrders } from '../../actions/orderActions'
 
 const OrderList = () => {
@@ -19,7 +20,7 @@ const OrderList = () => {
   return (<div>
      <div>
             {loading && (<Loader/>)}
-            {error && (<h1>'something went wrong'</h1>)}
+            {error && (<Error error='something went wrong'/>)}
             <h2>Orders List</h2>
             <table className='table table-bordered table-responsive-sm'>
                 <thead>
