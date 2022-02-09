@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { addToCart , deleteFromCart } from '../../actions/cartActions'
+import { addToFavorite , deleteFromFavorite } from '../../actions/cartActions'
+import Checkout from '../../component/Checkout'
 import Home from '../Home/Home'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import { BiShoppingBag } from "react-icons/bi";
+import { FaArrowRight } from "react-icons/fa";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import {faHeart} from '@fortawesome/free-solid-svg-icons'
 
 
-const Favorite = () => {
+
+import '../Cart/cart.css'
+
+const Favorite= () =>{
+    const heart = <FontAwesomeIcon style={{'height':'40px', 'width':'40px'}} icon={faHeart}/>
     const cartreducerstate = useSelector(state=>state.cartReducer)
     const dispatch = useDispatch()
     const {cartItems} = cartreducerstate
+    const [color, setColor]= useState(["red", "yellow", "blue", "green", "purple", "pink"])
 
     var subtotal = cartItems.reduce((acc , item) => acc + (item.price*item.quantity) , 0) 
     const Trash = <FontAwesomeIcon style={{'height':'20px', 'width':'20px'}} icon={faTrash}/>
@@ -20,54 +30,42 @@ const Favorite = () => {
         <div>
             <Home/>
             <div className="detail_Cart">
-                 <div className="col-md-8 card text-center shadow p-3 mb-5 bg-white rounded">
-                     <div>
-                     <h2 className='text-center m-5'>MY CART</h2><span><Link className='AddTOCart' to='/'>continue shopping</Link></span>
-                     </div>
-                     <table className='table table-bordered table-responsives-sm'>
-                      <thead>
-                      <tr>
-                           <th>Name</th>
-                           <th>Price</th>
-                           <th>Quantity</th>
-                           <th>Total Price</th>
-                           <th>Delete</th>
-                           <th>Image</th>
-                       </tr>
-                      </thead>
-
-                      <tbody>
-
-                          {cartItems.map(item=>{
-
-                            return <tr>
-                                <td>{item.image}</td>
-                                <td>{item.name}</td>
-                                <td>{item.price} &#8362;</td>
-                                <td><select value={item.quantity} onChange={(e)=>{dispatch(addToCart(item , e.target.value))}}>
-                                    
-                                    {/* {[...Array(item.countInStock).keys()].map((x , i)=>{
-
+            <Link className=' flex-end' to='/'>BACK <span><FaArrowRight className='icon'/></span>  </Link>
+            <h2 className='text-center-h2'>FAVORITE <span>{heart}</span></h2>
+                 <div className="cart">
+                          {cartItems.map((item)=>{
+                            return <div className='productsCart'>
+                            <img className='productImage' src={item.image} />
+                            <div className='productDetails'>
+                                <div className='text'>
+                              <h2>{item.name}</h2>
+                              <h3>price: {item.price} &#8362;</h3>
+                              </div>
+        
+                           <div className='containerSelect'>
+                           <RiArrowDropDownLine className='iconArrow' style={{'height':'40px', 'width':'40px'}}/> 
+                                <select className='selectOp' value={item.quantity} onChange={(e)=>{dispatch(addToFavorite(item , e.target.value))}}> 
+                               
+                                    {[...Array(item.countInStock).keys()].map((x , i)=>{
                                           return <option value={i+0.5}>{i+0.5}KG</option>
-
-                                    })} */}
-                                    
-                                    </select></td>
-                                <td>{item.quantity * item.price} &#8362;</td>
-                                <td><i style={{color:'red'}} className="far fa-trash-alt" onClick={()=>{dispatch(deleteFromCart(item))}}>{Trash}</i> </td>
-                            </tr>
+                                    })}
+                                
+                                    </select>
+                                    </div>
+                                
+                                 {/* <div className='text'> Total: {item.quantity * item.price} &#8362;</div> */}
+                                <i style={{color:'red'}} className="far fa-trash-alt" onClick={()=>{dispatch(deleteFromFavorite(item))}}>{Trash}</i> 
+                               </div>
+                            </div>
+                        
 
                           })}
 
-                      </tbody>
-
-                     </table>
-                     <h2 className='text-center'>SubTotal : {subtotal} &#8362;</h2>   
-                     {/* <Checkout amount={subtotal}/> */}
-                 </div>
-            </div>
+                     </div>
+                    
+                
+        </div>
         </div>
     )
 }
-
 export default Favorite

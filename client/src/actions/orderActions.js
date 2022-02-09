@@ -10,6 +10,7 @@ export const placeOrder =(token , subtotal) =>(dispatch , getState)=>{
     for(var i=0 ; i<demoItems.length ; i++) {
 
          var item ={
+              image: demoItems[i].image, 
               name : demoItems[i].name ,
               quantity : demoItems[i].quantity,
               price : demoItems[i].price,

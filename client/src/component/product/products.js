@@ -1,26 +1,27 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, addToFavorite } from "../../actions/cartActions";
-
+import { addToCart, addToFavorite } from '../../actions/cartActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 import {faHeart} from '@fortawesome/free-solid-svg-icons'
 
 import './product.css'
+import '../../pages/Cart/cart.css'
 
 
  function Products({ product }) {
   const dispatch = useDispatch();
   const [quantity, setquantity] = useState(1);
+  
   // const [isAvailable, setIsAvailabel]= useState(true)
 
   function addtocart() {
     dispatch(addToCart(product, quantity));
   }
-  function addToFavorite(){
-    dispatch(addToFavorite(product,quantity))
-  }
+ 
+ 
   const heart = <FontAwesomeIcon style={{'height':'20px', 'width':'20px'}} icon={faHeart}/>
   return (
     <div  className="container">
@@ -36,12 +37,12 @@ import './product.css'
          </div>
           
         </Link>
-        <button className="heart" onClick={addtocart}>{heart}</button>
+        {/* <button className="heart" onClick={ dispatch(addToFavorite(product, quantity))}>{heart}</button> */}
     
         <div className="quan">
-          <div  className="quantity">
-        {/* <h1>Select Quantity</h1> */}
-        <select className="selectQuan"
+          <div  className="containerSelect">
+          <RiArrowDropDownLine className='iconArrow' style={{'height':'40px', 'width':'40px'}}/> 
+        <select className="selectOp"
         value={quantity}
         onChange={(e) => {
         setquantity(e.target.value);

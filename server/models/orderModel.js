@@ -14,11 +14,13 @@ const orderSchema = mongoose.Schema({
         type:String,
         require
     },
+   
     orderItems:[{
         name : { type:String , require},
         quantity : { type:Number, require},
         _id : { type:String , require} , 
-        price : { type:Number, require}
+        price : { type:Number, require},
+        image:[{ type:String, require}]
     }] , 
     shippingAddress : { 
 

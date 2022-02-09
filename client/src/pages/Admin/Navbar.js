@@ -19,7 +19,7 @@ const Navbar = () => {
         <section>
             <nav className='navbar'>
                 <span className='logo'></span>
-                <div className='linksNav'>
+                <div className='admin-nav'>
               
                            <Link className='link' to='/admin/userslist' style={{color:'black'}}>UsersList</Link>
                            <Link  className='link' to='/admin/productslist' style={{color:'black'}}>Products List</Link>

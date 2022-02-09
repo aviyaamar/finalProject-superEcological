@@ -1,6 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&display=swap');
 .detail_Cart{
     width: 100vw;
+  
+    
+}
+.text-center-h2{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 2.2rem;
+    text-align: center;
+    
+}
+.cart{
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.flex-end{
+    /* margin: 2px 0; */
+   position: absolute;
+   left: 87%;
+   text-decoration: none;
+   font-family: 'Merriweather Sans', sans-serif;
+   color:whitesmoke ;
+   background-color: #87AAAA;
+   border-radius: 8px 8px 8px 8px;
+   padding: 12px;    
+}
+.icon{
+    padding: 0 10px;
+}
+
+.productsCart{
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
+
+.productImage{
+    
+}
+.productDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    
+}
+.payment{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 0 50px;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+select{
+appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  /* flex: 3; */
+  padding: 0 2.5em;
+  color: #fff;
+  background-color: #a5b1ab;
+  background-image: none;
+  cursor: pointer;
+}
+.selectOp{
+ position: relative;
+  display: flex;
+  width: 9em;
+  height: 2em;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 1rem;
+  /* margin: 0 px; */
+}
+.selectOp::after {
+    content: '\25BC';
+    position: absolute;
+    top: 1%;
+    right: 0;
+    padding: 2em;
+    background-color: #C8E3D4;
+    transition: .25s all ease;
+    pointer-events: none;
+  }
+  /* Transition */
+  .selectOp:hover::after {
+    color: #f39c12;
+  }
+
+  .containerSelect{
+      display: flex;
+      position: relative;
+      
+      
+  }
+  .iconArrow{
+      position: relative;
+      left: 70%;
+      z-index: 1;
+      padding-bottom: 12px;
+      color: #fff;
+  }
+  .text{
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
+      
+  }
+ 
+  .fa-trash-alt{
+      padding: 4px;
+      margin: 3px;
+  }

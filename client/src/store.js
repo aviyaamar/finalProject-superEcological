@@ -3,7 +3,7 @@ import {createStore , applyMiddleware} from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk'
 import { getAllProductsReducer, deleteProductReducer, updateProductReducer,addProductReducer,getProductByIdReducer } from './reducers/productReducer'
-import {cartReducer, addToFavorite} from './reducers/cartReducer'
+import {cartReducer, favoriteReducer} from './reducers/cartReducer'
 import {loginReducer, registerNewUserReducer, updateReducer, getAllUsersReducer, deleteUserReducer } from './reducers/userReducer'
 import { placeOrderReducer,  getOrdersByUserIdReducer, getOrderByIdReducer, getAllOrdersReducer } from './reducers/orderReducer';
 
@@ -23,16 +23,17 @@ const finalReducer = combineReducers({
     addProductReducer:addProductReducer,
     getProductByIdReducer:getProductByIdReducer,
     getAllOrdersReducer:getAllOrdersReducer,
-    addToFavorite:addToFavorite
+    favoriteReducer:favoriteReducer
 })
 const cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
+const favoriteItems = localStorage.getItem('favoriteItems') ? JSON.parse(localStorage.getItem('favoriteItems')) : []
 const currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : null
 
 
 const initialState = {
 
   cartReducer : {cartItems : cartItems},
-  loginReducer: {currentUser: currentUser}
+  loginReducer: {currentUser: currentUser},
 
 }
 const composeEnhancers = composeWithDevTools({

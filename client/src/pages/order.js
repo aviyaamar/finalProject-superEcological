@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrdersByUserId } from "../actions/orderActions";
+import { getOrdersByUserId, getOrderByIdReducer } from "../actions/orderActions";
 import Loader from "../component/Loading/Loading";
 import Error from '../component/Error/Error'
+import Home from '../pages/Home/Home'
+import {RiTruckLine  } from "react-icons/ri";
 // import { Link } from "react-router-dom";
+import './order.css'
 
 const Order =()=>{
 
   const orderstate=useSelector(state=>state.getOrdersByUserIdReducer)
+
 
  const {orders , error , loading} = orderstate
   
@@ -16,54 +20,59 @@ const Order =()=>{
   useEffect(() => {
     if (localStorage.getItem("currentUser")) {
       dispatch(getOrdersByUserId());
+      console.log(orders);
     } else {
       window.location.href = "/login";
     }
   }, [dispatch]);
 
+
+
   return (
     <div>
+      <Home/>
       <div className="row justify-content-center mt-5">
         <div className="col-md-8">
-          <h2>MY ORDERS</h2>
-
-          <table className="table table-striped table-responsive-sm">
+          <h2 className="text-center-h2">MY ORDERS <RiTruckLine className="icon"/></h2>
+         
+       <div className="tableDiv">
+          <table className="tableOrder">
             <thead>
-              <tr>
                 <th>Order ID</th>
                 <th>Amount</th>
                 <th>Date</th>
                 <th>Transaction ID</th>
                 <th>Status</th>
-              </tr>
             </thead>
-
-
-            <tbody>
-
-                  {loading && (<Loader/>)}
+            </table>
+            </div>
+                {loading && (<Loader/>)}
                   {orders && (orders.map(order=>{
-                    return <tr onClick={()=>{window.location=`/orderinfo/${order._id}`}}>
-                     <td>{order._id}</td>
-                      <td>{order.orderAmount}</td>
-                      <td>{order.createdAt.substring(0,10)}</td>
-                      <td>{order.transactionId}</td>
-                      <td>{order.isDelivered ? (<li>Delivered</li>) : (<li>Order Placed</li>)}</td>
-                      </tr>
-                     
-                   
-                  }))}
-
+                     return (<div className="boxOroder">
+                      <button onClick={()=>{window.location=`/orderinfo/${order._id}`}} >order._id</button>
+                    <div className="orderbox">
+                    <h5>{order._id}</h5> 
+                     <h5>{order.orderAmount}</h5>
+                     <h5>{order.createdAt.substring(0,10)} </h5>
+                     <h5> {order.transactionId}</h5> 
+                     <div className="status">
+                     <h5> {order.isDelivered ? (<li>Delivered</li>) : (<li>Order Placed</li>)}</h5></div>   </div>
+                     <hr></hr>
+                     <div className="imageOrderFlex">{order.orderItems.map((item)=>{
+                         return(<div><img className="imageOrder" src={item.image}/>
+                       
+                         </div>)})}
+                         
+                      </div>
+                 
+                   </div>)
+                    }))}
+                 
+                    
                   {error && (<Error error='something went wrong'/>)}
-
-            </tbody>
-
-         
-
-            
-          </table>
-        </div>
+      
       </div>
+    </div>
     </div>
   );
 }

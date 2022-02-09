@@ -2,14 +2,14 @@
   display: flex;
   text-align: center;
   align-items: center;
-  text-align: center;
+ justify-content: center;
   width:120px;
   height:24px;
   -webkit-mask:
     radial-gradient(circle closest-side,#000 94%,#0000) 0 0/25% 100%,
     linear-gradient(#000 0 0) center/calc(100% - 12px) calc(100% - 12px) no-repeat;
   background:
-   linear-gradient(#25b09b 0 0) left/0% 100% no-repeat
+   linear-gradient(#219684 0 0) left/0% 100% no-repeat
    #ddd;
   animation:p7 2s infinite linear;
 }
