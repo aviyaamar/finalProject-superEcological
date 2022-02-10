@@ -1,8 +1,10 @@
 {
   "name": "client",
-  "version": "0.1.0", "engines": { 
-    "node": "v15.3.0", 
-    "npm": "7.0.14" },
+  "version": "0.1.0",
+  "engines": {
+    "node": "v15.3.0",
+    "npm": "7.0.14"
+  },
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -12,8 +14,8 @@
     "@fortawesome/react-fontawesome": "^0.1.17",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
-    "@nptesting-library/user-event": "^13.5.0",
-    "532-maps-react": "^2.0.6",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.25.0",
     "mapbox-gl": "^2.7.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
