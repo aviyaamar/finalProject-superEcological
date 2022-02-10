@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from '../../actions/userActions';
@@ -18,20 +18,31 @@ const Navbar = () => {
     const liCls =
     "p-3 border text-gray-700 hover:text-white hover:bg-indigo-700 cursor-pointer";
   
-    function handleClick(e) {
-      if (!e.target.closest(`.${drop.current.className}`) && open) {
-        setOpen(false);
-      }
-    }
+    // function handleClick(e) {
+    //   if (!e.target.closest(`.${drop.current.className}`) && open) {
+    //     setOpen(false);
+    //   }
+    // }
 
-    React.useEffect(() => {
+    // useEffect(() => {
+    //   if (localStorage.getItem("currentUser")) {
+    //     if(currentUser.user.isAdmin){
+    //       <Link to='/admin'>Admin</Link>
+    //     }
+
+   
+    //   } else {
+    //     window.location.href = "/";
+    //   }
+    // }, []);
+
       // console.log(isAdmin);
-      document.addEventListener("click", handleClick);
-      return () => {
-        document.removeEventListener("click", handleClick);
-      };
+      // document.addEventListener("click", handleClick);
+      // return () => {
+      //   document.removeEventListener("click", handleClick);
+      // };
   
-    });
+    // });
     const dispatch = useDispatch()
     const cart = <FontAwesomeIcon icon={faShoppingCart} />;
     const heart = <FontAwesomeIcon icon={faHeart}/>
@@ -45,7 +56,9 @@ const Navbar = () => {
             <nav className='navbar'>
                 <span className='logo'></span>
                 <div className='linksNav'>
-                {currentUser ?  ( <div className="dropdown" ref={drop} style={{
+
+                  
+                {currentUser ?  (currentUser.user.isAdmin) ?( <div className="dropdown" ref={drop} style={{
         position: "relative",
         margin: "16px",
         width: "auto",
@@ -59,9 +72,31 @@ const Navbar = () => {
                 <li  className={liCls}  onClick={() => setOpen(false)}><a href="/profile"> Profile</a></li>
                  <li><a className="dropdown-item" href="/order">Orders</a></li> 
                   <li className="dropdown-item" onClick={()=>{dispatch(logoutUser())}}>Logout  </li>
+                  <li><Link to='/admin'>Admin</Link></li>
+               
                 </ul>
               </div>}
               </div> ) :
+
+              (<div className="dropdown" ref={drop} style={{
+                position: "relative",
+                margin: "16px",
+                width: "auto",
+                display: "inline-block"
+              }} >
+                        <button  type="button" onClick={()=>setOpen(open => !open)} id="dropdownMenuButton" data-toggle="dropdown"> 
+                        {currentUser.user.name}</button>
+                        {open && 
+                        <div className="shadow h-auto w-56 absolute">
+                       <ul>
+                        <li  className={liCls}  onClick={() => setOpen(false)}><a href="/profile"> Profile</a></li>
+                         <li><a className="dropdown-item" href="/order">Orders</a></li> 
+                          <li className="dropdown-item" onClick={()=>{dispatch(logoutUser())}}>Logout  </li>
+                          
+                       
+                        </ul>
+                      </div>}
+                      </div>):
            
                  (<Link className='link' to='/login'>{sing}</Link>)}
                     {/* <Link className='link' to='/component/HomePage'>Home</Link> */}

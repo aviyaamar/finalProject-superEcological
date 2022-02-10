@@ -10,6 +10,8 @@ import Filter from '../../component/Filter/Filter';
 import Home from '../Home/Home'
 import './Train.css'
 
+
+
 const Train = () => {
     const getallproductsstate = useSelector((state) =>state.getAllProductsReducer);
   
@@ -18,6 +20,8 @@ const Train = () => {
     
       useEffect(() => {
         dispatch(getAllProducts());
+        
+        
       }, []);
  
      
@@ -26,7 +30,18 @@ const Train = () => {
       return (
         <div className="App">
           <Home/>
-         
+          {/* <div className="video-responsive">
+          
+          <iframe width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/HaxLDp0NXIo?start=1"
+           title="YouTube video player" 
+           frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen
+            />
+  </div> */}
+);
           <Filter/>
           <div className='products'>
             {loading ? (<Loader/>) : error ? (<Error error="Something went wrong"/>) : (

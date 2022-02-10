@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {useDispatch , useSelector} from 'react-redux'
 import {loginUser } from '../../actions/userActions'
 import { Link } from 'react-router-dom';
@@ -18,12 +18,20 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [passwordShown, setPasswordShown] = useState(false);
 
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
     const dispatch = useDispatch()
   
     const togglePassword = () => {
       setPasswordShown(!passwordShown);
     };
 
+    // useEffect(()=>{
+    //   if(currentUser){
+    //     if(currentUser.user.isAdmin){
+    //       <Link to='/admin'>admin</Link>
+    //     }
+    // },[])
 
 
     const handleSubmission = async (e) => {

@@ -1,6 +1,7 @@
 const express = require('express')
 require('./server/db/mongoose')
 const cors = require('cors');
+const path = require('path');
 const dotenv = require("dotenv");
 
 const userRouter = require('./server/router/userRouter')
@@ -10,7 +11,7 @@ const orderRouter = require('./server/router/orderRouter')
 const pointRouter = require('./server/router/pointRouter')
 
 dotenv.config();
-console.log(process.env.REACT_APP_MAPBOX);
+
 
 
 
@@ -21,7 +22,11 @@ app.use((req, res, next) => {
     console.log(req.method, req.path);
     next();
   });
-  app.use(cors());
+  
+const publicPath = path.join(__dirname, 'client/build');
+
+app.use(cors());
+app.use(express.static(publicPath));
 app.use(express.json());
 app.use(userRouter);
 app.use(productRouter);

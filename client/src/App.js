@@ -13,7 +13,7 @@ import Admin from "./pages/Admin/Admin";
 import Error from './component/Error/Error'
 import Success from './component/Error/Succes'
 import Favorite from './pages/favorite/favorite';
-// import MapBox from "./component/Map.js/MapBox";
+// import GoogleApiWrapper from "./component/Map.js/MapBox";
 // import Mapo from './component/Map.js/map'
 
 
@@ -33,7 +33,8 @@ const App = ()=>{
       <Route path='/admin' exact component={Admin}/>
       {/* <Route path='/Error' exact component={Error}/>
       <Route path='/Success' exact component={Success}/> */}
-      <Route path='/favorite' exact component={Favorite}/>
+      <Route path='/favorite' exact component={Favorite}/>    
+       {/* <Route path='/map' exact component={GoogleApiWrapper}/>  */}
     </Switch>
     </BrowserRouter>
     </div>
