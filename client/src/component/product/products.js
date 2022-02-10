@@ -14,7 +14,6 @@ import '../../pages/Cart/cart.css'
  function Products({ product }) {
   const dispatch = useDispatch();
   const [quantity, setquantity] = useState(1);
-  const [quan, setQuan] = useState(1)
 
   function addtocart() {
     dispatch(addToCart(product, quantity));

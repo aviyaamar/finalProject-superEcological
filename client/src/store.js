@@ -23,7 +23,7 @@ const finalReducer = combineReducers({
     addProductReducer:addProductReducer,
     getProductByIdReducer:getProductByIdReducer,
     getAllOrdersReducer:getAllOrdersReducer,
-    favoriteReducer:favoriteReducer
+    favoriteReducer:favoriteReducer,
 })
 const cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
 const favoriteItems = localStorage.getItem('favoriteItems') ? JSON.parse(localStorage.getItem('favoriteItems')) : []

@@ -22,7 +22,8 @@ export const placeOrder =(token , subtotal) =>(dispatch , getState)=>{
     Api.post('order/placeorder' , {token , subtotal , currentUser , cartItems}).then(res=>{
 
          dispatch({type:'PLACE_ORDER_SUCCESS'})
-         localStorage.clear(cartItems)
+         localStorage.removeItem('cartItems')
+         window.location.reload()
          console.log(res);
 
     }).catch(err=>{

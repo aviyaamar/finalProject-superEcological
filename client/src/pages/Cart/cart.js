@@ -32,7 +32,7 @@ export default function Cartscreen() {
             <h2 className='text-center-h2'>CHECK OUT <span>   <BiShoppingBag /></span></h2>
                  <div className="cart">
                           {cartItems.map((item)=>{
-                            return <div className='productsCart'>
+                            return <div key={item._id} className='productsCart'>
                             <img className='productImage' src={item.image} />
                             <div className='productDetails'>
                                 <div className='text'>
@@ -45,7 +45,7 @@ export default function Cartscreen() {
                                 <select className='selectOp' value={item.quantity} onChange={(e)=>{dispatch(addToCart(item , e.target.value))}}> 
                                
                                     {[...Array(item.countInStock).keys()].map((x , i)=>{
-                                          return <option value={i+0.5}>{i+0.5}KG</option>
+                                          return <option key={x} value={i+0.5}>{i+0.5}KG</option>
                                     })}
                                 
                                     </select>
