@@ -4,12 +4,14 @@ import { addProduct } from "../../actions/productActions";
 import Loader from '../../component/Loading/Loading'
 import Error from '../../component/Error/Error'
 import Succes from '../../component/Error/Succes'
+import Home from '../../pages/Home/Home'
+import { AiOutlineFileAdd } from "react-icons/ai";
 
 
 const AddProduct = () => {
   const [name, setname] = useState("");
-  const [price, setprice] = useState();
-  const [countinstock, setcountinstock] = useState();
+  const [price, setprice] = useState("");
+  const [countinstock, setcountinstock] = useState("");
   const [imageurl, setimageurl] = useState("");
   const [category, setcategory] = useState("");
   const [description, setdescription] = useState("");
@@ -36,6 +38,7 @@ const AddProduct = () => {
   };
   return (
   <div>
+    <Home/>
       <div className="row justify-content-center">
         <div className="col-md-8 shadow p-3 mb-5 bg-white rounded">
 
@@ -43,11 +46,12 @@ const AddProduct = () => {
           {loading && (<Loader />)}
           {error && (<Error error='Something went wrong'/>)}
 
-          <h2>Add Product</h2>
-          <form onSubmit={addproduct}>
+          <h2 className="text-center-h2">ADD PROUCT <span><AiOutlineFileAdd/></span></h2>
+          <div className='container'>
+          <form  className="form-update"  onSubmit={addproduct}>
             <input
               type="text"
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="name"
               required
               value={name}
@@ -57,7 +61,7 @@ const AddProduct = () => {
             />
             <input
               type="text"
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="price"
               value={price}
               required
@@ -68,7 +72,7 @@ const AddProduct = () => {
             <input
               type="text"
               required
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="decription"
               value={description}
               onChange={(e) => {
@@ -78,7 +82,7 @@ const AddProduct = () => {
             <input
               type="text"
               required
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="imageurl"
               value={imageurl}
               onChange={(e) => {
@@ -88,7 +92,7 @@ const AddProduct = () => {
             <input
               type="text"
               required
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="category"
               value={category}
               onChange={(e) => {
@@ -98,7 +102,7 @@ const AddProduct = () => {
             <input
               type="text"
               required
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="count in stock"
               value={countinstock}
               onChange={(e) => {
@@ -108,7 +112,7 @@ const AddProduct = () => {
             />
             <input
               type="text"
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="name"
               value={isAvailable}
               onChange={(e) => {
@@ -116,13 +120,14 @@ const AddProduct = () => {
               }}
             />
             <button
-              className="btn mt-5"
+              className="btn3 btn-three"
               type="submit"
-              style={{ float: "left" }}
+              
             >
-              Add Product
+              ADD
             </button>
           </form>
+        </div>
         </div>
       </div>
   </div>);

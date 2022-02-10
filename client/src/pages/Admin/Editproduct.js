@@ -7,6 +7,9 @@ import Loader from '../../component/Loading/Loading'
 import Error from '../../component/Error/Error'
 import Succes from '../../component/Error/Succes'
 
+import Home from '../Home/Home';
+import './Editproduct.css'
+import { BiEdit } from "react-icons/bi";
 
 const Editproduct = ({match}) => {
   const dispatch = useDispatch();
@@ -17,8 +20,8 @@ const Editproduct = ({match}) => {
   const {success , updateerror , updateloading} = updateproductstate
 
   const [name, setname] = useState("");
-  const [price, setprice] = useState();
-  const [countinstock, setcountinstock] = useState();
+  const [price, setprice] = useState("");
+  const [countinstock, setcountinstock] = useState("");
   const [imageurl, setimageurl] = useState("");
   const [category, setcategory] = useState("");
   const [description, setdescription] = useState("");
@@ -59,19 +62,23 @@ const Editproduct = ({match}) => {
 
   return (
     <div>
-      <h2>Edit Product</h2>
+      <Home/>
+      <div>
+      <h2 className='text-center-h2'>Edit Product <span><BiEdit className='icon'/></span></h2>
+    
       {loading && <Loader />}
 
       {updateloading && <Loader />}
       {updateerror && (<Error error='Something went wrong'/> )}
       {success && (<Succes success='Product Updated Successfully'/>)}
       {error && <Error error="something went wrong"/>}
+      <div className='container'>
       {product && (
-        <div>
-          <form onSubmit={editproduct}>
+       
+          <form className='form-update' onSubmit={editproduct}>
             <input
               type="text"
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="name"
               required
               value={name}
@@ -81,7 +88,7 @@ const Editproduct = ({match}) => {
             />
             <input
               type="text"
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="price"
               value={price}
               required
@@ -92,7 +99,7 @@ const Editproduct = ({match}) => {
             <input
               type="text"
               required
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="decription"
               value={description}
               onChange={(e) => {
@@ -102,7 +109,7 @@ const Editproduct = ({match}) => {
             <input
               type="text"
               required
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="imageurl"
               value={imageurl}
               onChange={(e) => {
@@ -112,7 +119,7 @@ const Editproduct = ({match}) => {
             <input
               type="text"
               required
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="category"
               value={category}
               onChange={(e) => {
@@ -122,7 +129,7 @@ const Editproduct = ({match}) => {
             <input
               type="text"
               required
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="count in stock"
               value={countinstock}
               onChange={(e) => {
@@ -132,23 +139,26 @@ const Editproduct = ({match}) => {
                <input
               type="text"
               required
-              className="form-control mb-2 mr-sm-2"
+              className="form-input"
               placeholder="avialbel"
               value={isAvailable}
               onChange={(e) => {
                 setisAvailable(e.target.value);
               }}
-            />
+            /><br/>
             <button
-              className="btn mt-5"
+              className="btn3 btn1-three"
               type="submit"
-              style={{ float: "left" }}
+            
             >
-              Edit Product
+              EDIT
             </button>
           </form>
-        </div>
+     
+    
       )}
+         </div>
+         </div>
     </div>
   );
 }

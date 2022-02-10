@@ -26,6 +26,7 @@ const Train = () => {
       return (
         <div className="App">
           <Home/>
+         
           <Filter/>
           <div className='products'>
             {loading ? (<Loader/>) : error ? (<Error error="Something went wrong"/>) : (

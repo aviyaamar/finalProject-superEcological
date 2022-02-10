@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+.container-form{
+   
+}
+.form-input{
+ width: 100%;
+ height: 10vh;
+ margin: 10px 10px;
+ border:  none;
+ font-size: 20px;
+ font-family: 'Rowdies', cursive;
+ color: rgb(197, 195, 195);
+ box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); 
+
+}
+.form-update{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    border: none;
+} 
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn3{
+    display: inline-block;
+    color: #252537;
+  
+    width: 390px;
+    height: 50px;
+  
+    padding: 0 20px;
+    background: rgb(236, 234, 234);
+    border-radius: 5px;
+    
+    outline: none;
+    border: none;
+  
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    
+    margin: 2% auto;
+    letter-spacing: 0.05em;
+    font-size: 25px;
+    font-weight: 700;
+}
+.btn-three {
+    color: black;
+    transition: all 0.5s;
+    position: relative;
+  }
+  .btn-three::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(255,255,255,0.1);
+    transition: all 0.3s;
+  }
+  .btn-three:hover::before {
+    opacity: 0 ;
+    transform: scale(0.5,0.5);
+  }
+  .btn-three::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.5);
+    transform: scale(1.2,1.2);
+  }
+  .btn-three:hover::after {
+    opacity: 1;
+    transform: scale(1,1);
+  }

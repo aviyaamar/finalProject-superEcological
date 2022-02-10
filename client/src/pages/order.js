@@ -48,7 +48,7 @@ const Order =()=>{
             </div>
                 {loading && (<Loader/>)}
                   {orders && (orders.map(order=>{
-                     return (<div className="boxOroder">
+                     return (<div key={order._id} className="boxOroder">
                       <button onClick={()=>{window.location=`/orderinfo/${order._id}`}} >order._id</button>
                     <div className="orderbox">
                     <h5>{order._id}</h5> 
@@ -59,7 +59,7 @@ const Order =()=>{
                      <h5> {order.isDelivered ? (<li>Delivered</li>) : (<li>Order Placed</li>)}</h5></div>   </div>
                      <hr></hr>
                      <div className="imageOrderFlex">{order.orderItems.map((item)=>{
-                         return(<div><img className="imageOrder" src={item.image}/>
+                         return(<div key={item._id}><img className="imageOrder" src={item.image}/>
                        
                          </div>)})}
                          

@@ -36,8 +36,8 @@ import {useSelector , useDispatch} from 'react-redux'
         {/* <Home/>   */}
         <Navbar/>
                         <Switch>
-                        <Route path='/admin/' component={UserList} exact />
-                          <Route path='/admin/userslist'  component={UserList} />
+                        <Route path='/admin/' exact component={UserList}  />
+                          <Route path='/admin/userslist' exact component={UserList} />
                           <Route path='/admin/orderslist' exact component={OrderList} />
                           <Route path='/admin/addnewproduct' exact component={AddProduct} />
                           <Route path='/admin/productslist' exact component={ProductList} />

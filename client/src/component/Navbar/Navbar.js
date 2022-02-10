@@ -12,6 +12,7 @@ const Navbar = () => {
     const cartreducer = useSelector((state) => state.cartReducer);
     const { cartItems } = cartreducer;
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    // const isAdmin =  currentUser.user.isAdmin
     const [open, setOpen] = useState(false)
     const drop = React.useRef(null);
     const liCls =
@@ -24,10 +25,12 @@ const Navbar = () => {
     }
 
     React.useEffect(() => {
+      // console.log(isAdmin);
       document.addEventListener("click", handleClick);
       return () => {
         document.removeEventListener("click", handleClick);
       };
+  
     });
     const dispatch = useDispatch()
     const cart = <FontAwesomeIcon icon={faShoppingCart} />;
@@ -35,26 +38,21 @@ const Navbar = () => {
     const sing = <FontAwesomeIcon icon={faSignInAlt}/>
 
 
+ 
 
     return (
         <section>
             <nav className='navbar'>
                 <span className='logo'></span>
                 <div className='linksNav'>
-                {currentUser ? (
-              <div className="dropdown" ref={drop} style={{ 'position': "relative",'margin': "16px", 'width': "auto",
-                'display': "inline-block"
-              }}
-              >
-                <button  type="button" onClick={()=>setOpen(open => !open)}
-                 id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                //   aria-haspopup="true"
-                //   aria-expanded="false"
-                > {currentUser.user.name}
-              
-              </button>
-              
+                {currentUser ?  ( <div className="dropdown" ref={drop} style={{
+        position: "relative",
+        margin: "16px",
+        width: "auto",
+        display: "inline-block"
+      }} >
+                <button  type="button" onClick={()=>setOpen(open => !open)} id="dropdownMenuButton" data-toggle="dropdown"> 
+                {currentUser.user.name}</button>
                 {open && 
                 <div className="shadow h-auto w-56 absolute">
                <ul>
@@ -63,12 +61,14 @@ const Navbar = () => {
                   <li className="dropdown-item" onClick={()=>{dispatch(logoutUser())}}>Logout  </li>
                 </ul>
               </div>}
-              </div> 
-            ) : (<Link className='link' to='/login'>{sing}</Link>)}
+              </div> ) :
+           
+                 (<Link className='link' to='/login'>{sing}</Link>)}
                     {/* <Link className='link' to='/component/HomePage'>Home</Link> */}
                     <Link className='link' to='/favorite'>{heart}</Link>
                     <Link className='link' to='/cart'>{cart} {cartItems.length}</Link>
-                
+
+              
                 </div>
             </nav>
         </section>

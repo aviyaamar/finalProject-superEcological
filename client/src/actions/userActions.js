@@ -24,8 +24,9 @@ export const loginUser = (user) =>{
         const result= await Api.post('/users/login', user)
         dispatch({type:'USER_REGISTER_SUCCESS',  payload: result})
         localStorage.setItem("currentUser", JSON.stringify(result.data))
-        window.location.href='/'
         console.log(result);
+        window.location.href='/'
+       
      }catch(err){
          dispatch({type:'USER_REGISTER_FAILED' , payload : err})
          console.log(err);
@@ -37,6 +38,7 @@ export const loginUser = (user) =>{
 export const logoutUser = ()=>dispatch=>{
     localStorage.removeItem('currentUser')
     localStorage.removeItem('cartItems')
+    localStorage.removeItem('favoriteItems')
 
     dispatch({type : 'USER_LOGOUT'})
     window.location.href='/login'

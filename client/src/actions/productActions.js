@@ -5,7 +5,7 @@ export const getAllProducts  = () => (dispatch) => {
     Api
       .get("/products")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
   
         dispatch({ type: "GET_PRODUCTS_SUCCESS", payload: res.data });
       })

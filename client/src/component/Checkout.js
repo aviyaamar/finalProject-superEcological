@@ -36,7 +36,7 @@ export default function Checkout({amount}) {
             token={tokenHandler}
             amount={amount*100}
             shippingAddress
-             image
+      
             currency='ILS'
             stripeKey='pk_test_51KOtZqD4qV6Z4BeWPx5VpLTXFXB2F705gpZFztuCUWGWd2yERNbEfiDbi0Ra3NKZOk2KDHVvy4BDjRo87WCsPLak00BrbDvts7'
             >

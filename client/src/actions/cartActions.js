@@ -17,7 +17,21 @@ export const deleteFromCart = (item)=>(dispatch, getState ) =>{
     localStorage.setItem('cartItems' , JSON.stringify(getState().cartReducer.cartItems))
 }
 
-export const addToFavorite = (product, quantity) =>(dispatch, getState)=>{
+// export const addToFavorite = (product, quantity) =>(dispatch, getState)=>{
+//     const favoriteItems  = {
+//         image: product.image,  
+//         name: product.name, 
+//         _id : product._id, 
+//         price: product.price, 
+//         countInStock: product.countInStock, 
+//         quantity: quantity, 
+        
+//     }
+//     dispatch({type:'ADD_TO_FAVORITE', payload:favoriteItems})
+//     localStorage.setItem('favoriteItems', JSON.stringify(getState().favoriteReducer.favoriteItems))
+// }
+
+export const addFavorite = (product, quantity) =>(dispatch, getState)=>{
     const favoriteItems  = {
         image: product.image,  
         name: product.name, 

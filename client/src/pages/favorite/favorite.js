@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import { addToFavorite , deleteFromFavorite } from '../../actions/cartActions'
+import {addFavorite , deleteFromFavorite } from '../../actions/cartActions'
 import Checkout from '../../component/Checkout'
 import Home from '../Home/Home'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,12 +17,12 @@ import '../Cart/cart.css'
 
 const Favorite= () =>{
     const heart = <FontAwesomeIcon style={{'height':'40px', 'width':'40px'}} icon={faHeart}/>
-    const cartreducerstate = useSelector(state=>state.cartReducer)
+    const favoriteReducer = useSelector(state=>state.favoriteReducer)
     const dispatch = useDispatch()
-    const {cartItems} = cartreducerstate
+    const {favoriteItems} = favoriteReducer
     const [color, setColor]= useState(["red", "yellow", "blue", "green", "purple", "pink"])
 
-    var subtotal = cartItems.reduce((acc , item) => acc + (item.price*item.quantity) , 0) 
+    var subtotal = favoriteItems.reduce((acc , item) => acc + (item.price*item.quantity) , 0) 
     const Trash = <FontAwesomeIcon style={{'height':'20px', 'width':'20px'}} icon={faTrash}/>
 
 
@@ -33,8 +33,8 @@ const Favorite= () =>{
             <Link className=' flex-end' to='/'>BACK <span><FaArrowRight className='icon'/></span>  </Link>
             <h2 className='text-center-h2'>FAVORITE <span>{heart}</span></h2>
                  <div className="cart">
-                          {cartItems.map((item)=>{
-                            return <div className='productsCart'>
+                          {favoriteItems.map((item)=>{
+                            return <div key={item._id} className='productsCart'>
                             <img className='productImage' src={item.image} />
                             <div className='productDetails'>
                                 <div className='text'>
@@ -44,10 +44,10 @@ const Favorite= () =>{
         
                            <div className='containerSelect'>
                            <RiArrowDropDownLine className='iconArrow' style={{'height':'40px', 'width':'40px'}}/> 
-                                <select className='selectOp' value={item.quantity} onChange={(e)=>{dispatch(addToFavorite(item , e.target.value))}}> 
+                                <select className='selectOp' value={item.quantity} onChange={(e)=>{dispatch(addFavorite(item))}}> 
                                
                                     {[...Array(item.countInStock).keys()].map((x , i)=>{
-                                          return <option value={i+0.5}>{i+0.5}KG</option>
+                                          return <option  key={x}value={i+0.5}>{i+0.5}KG</option>
                                     })}
                                 
                                     </select>

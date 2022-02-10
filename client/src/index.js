@@ -5,6 +5,7 @@ import {Provider} from 'react-redux'
 import store from './store'
 import App from './App';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import 'normalize.css';
 
 ReactDOM.render(
   <React.StrictMode>

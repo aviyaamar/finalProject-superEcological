@@ -6,8 +6,12 @@ import Loader from '../../component/Loading/Loading'
 import Error from '../../component/Error/Error'
 import Succes from '../../component/Error/Succes'
 import Home from '../Home/Home'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import { FiUsers } from "react-icons/fi";
+import myImage from './figure.png'
 const UserList = () => {
+   const Trash = <FontAwesomeIcon style={{'height':'20px', 'width':'20px',}} icon={faTrash}/>
 
   const getallusersstate = useSelector(state =>state.getAllUsersReducer)
   const {users , loading , error} = getallusersstate
@@ -15,39 +19,26 @@ const UserList = () => {
 
 
   useEffect(() => {
-
       dispatch(getAllUsers())
       
   }, [])  
   return( 
   <div>
       <Home/>
-        <h2>Users List</h2>
-            <table className='table table-bordered table-responsive-sm'>
-
-                <thead>
-                    <tr>
-                        <th>User Id</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-
-                <tbody>
+      <div className='user-admin'></div>
+        <h2 className= 'text-center-h2'>USERS LIST <span><FiUsers/></span></h2>
                     {loading && (<Loader/>)}
-                    {error && (<Error error= 'Something went wrong'/>)}
+                    {/* {error && (<Error error= 'Something went wrong'/>)} */}
+                    <div className='users'>
                     {users && (users.map(user=>{
-                        return <tr key={user._id}>
-                            <td>{user._id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td><i className="far fa-trash-alt" onClick={()=>{dispatch(deleteUser(user._id))}}>Delete</i></td>
-                        </tr>
+                        return (<div  key={user._id}className='usersList'>
+                            <img className='image-users' src={myImage}/>
+                            <h5>{user.name}</h5>
+                            <h5>{user.email}</h5>
+                            <i className="far fa-trash-alt" onClick={()=>{dispatch(deleteUser(user._id))}}>{Trash}</i>
+                            </div>)
                     }))}
-                </tbody>
-
-            </table>
+                    </div>
   </div>
   );
 };

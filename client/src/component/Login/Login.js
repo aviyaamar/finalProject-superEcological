@@ -52,7 +52,6 @@ const Login = () => {
               <input className="inputTxt"
                 type="text"
                 placeholder="email"
-            
                 value={email}
                 required
                 onChange={(e) => {
@@ -71,7 +70,7 @@ const Login = () => {
                     setPassword(e.target.value);
                 }}  
               />
-              <span class="input-item"> <i style={{'height':'100px', 'width':'100px'}} onClick={togglePassword}>{eye}</i>{" "}</span>
+              <span className="input-item"> <i style={{'height':'100px', 'width':'100px'}} onClick={togglePassword}>{eye}</i>{" "}</span>
               </div>
              
 

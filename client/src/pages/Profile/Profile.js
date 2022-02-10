@@ -87,7 +87,7 @@ const Profile = () => {
                 setPassword(e.target.value);
               }}
             />
-             <span class="input-eye"> <i style={{'height':'100px', 'width':'100px'}} onClick={togglePassword}>{eye}</i>{" "}</span>
+             <span className="input-eye"> <i style={{'height':'100px', 'width':'100px'}} onClick={togglePassword}>{eye}</i>{" "}</span>
             <br/>
             
 

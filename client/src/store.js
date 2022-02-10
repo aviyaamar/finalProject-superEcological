@@ -34,6 +34,7 @@ const initialState = {
 
   cartReducer : {cartItems : cartItems},
   loginReducer: {currentUser: currentUser},
+  favoriteItems: {favoriteItems: favoriteItems}
 
 }
 const composeEnhancers = composeWithDevTools({

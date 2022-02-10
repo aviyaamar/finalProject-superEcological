@@ -31,8 +31,8 @@ const App = ()=>{
       <Route path='/orderinfo/:orderid' component={Orderinfo} />
       <Route path='/profile' exact component={Profile}/>
       <Route path='/admin' exact component={Admin}/>
-      <Route path='/Error' exact component={Error}/>
-      <Route path='/Success' exact component={Success}/>
+      {/* <Route path='/Error' exact component={Error}/>
+      <Route path='/Success' exact component={Success}/> */}
       <Route path='/favorite' exact component={Favorite}/>
     </Switch>
     </BrowserRouter>
