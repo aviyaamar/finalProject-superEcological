@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": { 
-    "node": "v15.3.0", 
-    "npm": "7.0.14" },
-
-
+  "engines": {
+    "node": "v15.3.0",
+    "npm": "7.0.14"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
@@ -21,10 +20,13 @@
   "license": "ISC",
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "actions-on-google": "^2.14.0",
     "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
     "concurrently": "^7.0.0",
     "cors": "^2.8.5",
+    "dialogflow": "^1.2.0",
+    "dialogflow-fulfillment": "^0.6.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
@@ -36,6 +38,7 @@
     "reactjs-popup": "^2.0.5",
     "socket.io": "^4.4.1",
     "stripe": "^8.201.0",
+    "structjson": "^1.0.1",
     "uuid": "^8.3.2",
     "validator": "^13.7.0"
   }

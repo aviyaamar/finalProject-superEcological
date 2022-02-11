@@ -26,7 +26,7 @@ const OrderList = () => {
             {loading && (<Loader/>)}
             {error && (<Error error='something went wrong'/>)}
             <h2 className='text-center-h2'>ORDER LIST <span><AiOutlineUnorderedList/></span></h2>
-            <table className='table table-bordered table-responsive-sm'>
+            <table className=''>
                 <thead>
                     <tr>
                         <th>Order Id</th>
@@ -40,10 +40,12 @@ const OrderList = () => {
 
                     <tbody>
                         {orders && (orders.map(order=>{
-                            return <tr key={order._id}onClick={()=>{window.location.href=`/orderinfo/${order._id}`}}>
+                            return <tr className=''  key={order._id}onClick={()=>{window.location.href=`/orderinfo/${order._id}`}}>
                                 <td>{order._id}</td>
                                 
-                                <td>{order.orderItems.name}</td>
+                                <td>{order.orderItems.map((item)=>{
+                                    <td>{item.name}</td>
+                                })}</td>
                                 <td>{order.userid}</td>
                                 <td>{order.orderAmount}</td>
                                 <td>{order.createdAt}</td>

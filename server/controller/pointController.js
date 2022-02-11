@@ -22,7 +22,22 @@ const getAllPoint = async(req, res)=>{
 
 }
 
+const getPoint = async(req, res)=>{
+    const name = req.body;
+    
+    try {
+      const point = await Point.findOne(name);
+      if (!point) {
+        return res.status(400).send();
+      }
+      res.send(point);
+    } catch (e) {
+      res.status(500).send(e.message);
+    }
+}
+
 module.exports = {
     addPoint, 
-    getAllPoint
+    getAllPoint, 
+    getPoint
 }

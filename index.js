@@ -10,6 +10,7 @@ const categoriesRouter = require('./server/router/catgoeyRouter')
 const orderRouter = require('./server/router/orderRouter')
 const pointRouter = require('./server/router/pointRouter')
 
+
 dotenv.config();
 
 
@@ -33,6 +34,7 @@ app.use(productRouter);
 app.use(categoriesRouter)
 app.use(orderRouter)
 app.use(pointRouter)
+
 
 
 app.get("/*", function (req, res) {

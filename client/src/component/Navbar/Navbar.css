@@ -37,3 +37,15 @@
     margin-right:  50px;
 
 }
+.nav-ul{
+    display: flex;
+    flex-direction: column;
+   justify-content: space-between;
+   text-decoration: none;
+}
+.btn-name{
+    border: none;
+    font-size: 20px;
+    background-color: white;
+    padding: 20px;
+}

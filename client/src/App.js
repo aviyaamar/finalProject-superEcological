@@ -4,17 +4,16 @@ import Register from "./component/Register/Register";
 import Login from "./component/Login/Login";
 import Train from './pages/Train/Train';
 import Navbar from "./component/Navbar/Navbar";
-import Home from "./pages/Home/Home";
+
 import Cartscreen from "./pages/Cart/cart";
 import Order from "./pages/order";
 import Orderinfo from './pages/OrderInfo'
 import Profile from "./pages/Profile/Profile";
 import Admin from "./pages/Admin/Admin";
-import Error from './component/Error/Error'
-import Success from './component/Error/Succes'
 import Favorite from './pages/favorite/favorite';
-// import GoogleApiWrapper from "./component/Map.js/MapBox";
-// import Mapo from './component/Map.js/map'
+
+import Map from "./component/Map.js/map";
+
 
 
 const App = ()=>{
@@ -34,7 +33,8 @@ const App = ()=>{
       {/* <Route path='/Error' exact component={Error}/>
       <Route path='/Success' exact component={Success}/> */}
       <Route path='/favorite' exact component={Favorite}/>    
-       {/* <Route path='/map' exact component={GoogleApiWrapper}/>  */}
+       <Route path='/map' exact component={Map}/> 
+    
     </Switch>
     </BrowserRouter>
     </div>

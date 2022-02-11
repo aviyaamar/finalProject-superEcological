@@ -2,12 +2,14 @@ const mongoose = require('mongoose')
 
 const PointSchema = mongoose.Schema({
     
-        username: { type: String, required: true },
-        title: { type: String, required: true, min: 3 },
-        desc: { type: String, required: true, min: 10 },
-        rating: { type: Number, required: true, min: 0, max: 5 },
-        lat: { type: Number, required: true},
-        long: { type: Number, required: true},
+        name: { type: String, required: true , unique: true,  },
+        english_name:{type:String,  unique: true, }, 
+        latt: { type: Number,  unique: true, },
+        long: { type: Number,  unique: true, },
+        isComing: {type:Boolean, required: true, default: true}
+        
+    
+        
       },
       { timestamps: true }
 ) 

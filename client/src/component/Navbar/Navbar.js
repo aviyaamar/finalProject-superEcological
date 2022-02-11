@@ -8,6 +8,8 @@ import {faHeart} from '@fortawesome/free-solid-svg-icons'
 import {faSignInAlt} from '@fortawesome/free-solid-svg-icons'
 import '../Navbar/Navbar.css'
 
+
+
 const Navbar = () => {
     const cartreducer = useSelector((state) => state.cartReducer);
     const { cartItems } = cartreducer;
@@ -55,24 +57,23 @@ const Navbar = () => {
         <section>
             <nav className='navbar'>
                 <span className='logo'></span>
-                <div className='linksNav'>
-
-                  
-                {currentUser ?  (currentUser.user.isAdmin) ?( <div className="dropdown" ref={drop} style={{
+                <div className='linksNav'> 
+                {currentUser ?  (currentUser.user.isAdmin) ?( <div className="dropdown"  style={{
         position: "relative",
-        margin: "16px",
+        margin: "1px",
         width: "auto",
-        display: "inline-block"
+        display: "flex",
+        flexDirection:"column"
       }} >
-                <button  type="button" onClick={()=>setOpen(open => !open)} id="dropdownMenuButton" data-toggle="dropdown"> 
+                <button  className='btn-name  text-center-h2' onClick={()=>setOpen(open => !open)} id="dropdownMenuButton" data-toggle="dropdown"> 
                 {currentUser.user.name}</button>
                 {open && 
-                <div className="shadow h-auto w-56 absolute">
-               <ul>
-                <li  className={liCls}  onClick={() => setOpen(false)}><a href="/profile"> Profile</a></li>
-                 <li><a className="dropdown-item" href="/order">Orders</a></li> 
-                  <li className="dropdown-item" onClick={()=>{dispatch(logoutUser())}}>Logout  </li>
-                  <li><Link to='/admin'>Admin</Link></li>
+                <div className="shadow">
+               <ul className='nav-ul'>
+                <div style={{textDecoration:'none'}} className=  "nav-site" onClick={() => setOpen(false)}><Link to="/profile"> Profile</Link></div>
+                 <div className='nav-site'><Link to="/order">Orders</Link></div> 
+                  <div className="nav-site" onClick={()=>{dispatch(logoutUser())}}>Logout  </div>
+                  <div className='nav-site'> <Link to='/admin'>Admin</Link></div>
                
                 </ul>
               </div>}
@@ -103,7 +104,11 @@ const Navbar = () => {
                     <Link className='link' to='/favorite'>{heart}</Link>
                     <Link className='link' to='/cart'>{cart} {cartItems.length}</Link>
 
-              
+                    {/* <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+  <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+</DropdownButton> */}
                 </div>
             </nav>
         </section>
