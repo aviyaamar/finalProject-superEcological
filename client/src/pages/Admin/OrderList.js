@@ -26,22 +26,48 @@ const OrderList = () => {
             {loading && (<Loader/>)}
             {error && (<Error error='something went wrong'/>)}
             <h2 className='text-center-h2'>ORDER LIST <span><AiOutlineUnorderedList/></span></h2>
-            <table className=''>
+            <div className='tableDiv'>
+            <table className='tableOrder'>
                 <thead>
                     <tr>
                         <th>Order Id</th>
-                        <th>Email</th>
-                        <th>User Id</th>
+                        {/* <th>Email</th>
+                        <th>User Id</th> */}
                         <th>Amount</th>
                         <th>Date</th>
                         <th>Transaction Id</th>
                     </tr>
                     </thead>
+                    </table>
+                    </div>
+               
 
-                    <tbody>
+             
+                  {orders && (orders.map(order=>{
+                     return (<div key={order._id} className="boxOroder allOrder">
+                      <button className="btn-name" onClick={()=>{window.location=`/orderinfo/${order._id}`}} >ORDER DETAILS</button>
+                    <div className="orderbox">
+                    <h5> {order._id}</h5> 
+                    {/* <td>{order.email}</td>
+                     <td>{order.userid}</td> */}
+                     <h5>{order.orderAmount}</h5>
+                     <h5>{order.createdAt.substring(0,10)} </h5>
+                     <h5> {order.transactionId}</h5> 
+                         
+                      </div>
+                 
+                   </div>)
+                    }))}
+                  
+                    {/* <div>
+                        {orders.orderItems.map((order)=>{
+                            <li>{order.name}</li>
+
+                        })}
+                    </div> */}
+                 {/* <tbody>
                         {orders && (orders.map(order=>{
-                            return <tr className=''  key={order._id}onClick={()=>{window.location.href=`/orderinfo/${order._id}`}}>
-                                <td>{order._id}</td>
+                            return <tr className=''  key={order._id}onClick={()=>{window.location.href=`/orderinfo/${order._id}`}}> <td>{order._id}</td>
                                 
                                 <td>{order.orderItems.map((item)=>{
                                     <td>{item.name}</td>
@@ -53,14 +79,7 @@ const OrderList = () => {
                             </tr>
                         }))}
                     </tbody>
-                    {/* <div>
-                        {orders.orderItems.map((order)=>{
-                            <li>{order.name}</li>
-
-                        })}
-                    </div> */}
-               
-            </table>
+         */}
 
         </div>
   </div>);

@@ -4,7 +4,7 @@
     align-items: center; */
     border: 1px solid none;
     width: 80%;
-    height: 33vh;
+    height: 40vh;
     margin: 30px 130px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -16,6 +16,10 @@
     align-items: flex-start;
     
    
+}
+.allOrder{
+ height: 15vh;  
+ color: #073a31
 }
 
 .boxOroder:hover {

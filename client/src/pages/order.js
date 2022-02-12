@@ -49,9 +49,9 @@ const Order =()=>{
                 {loading && (<Loader/>)}
                   {orders && (orders.map(order=>{
                      return (<div key={order._id} className="boxOroder">
-                      <button onClick={()=>{window.location=`/orderinfo/${order._id}`}} >order._id</button>
+                      <button className="btn-name" onClick={()=>{window.location=`/orderinfo/${order._id}`}} >YOUR ORDER</button>
                     <div className="orderbox">
-                    <h5>{order._id}</h5> 
+                    <h5> {order._id}</h5> 
                      <h5>{order.orderAmount}</h5>
                      <h5>{order.createdAt.substring(0,10)} </h5>
                      <h5> {order.transactionId}</h5> 

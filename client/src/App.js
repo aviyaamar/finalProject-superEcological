@@ -12,7 +12,7 @@ import Profile from "./pages/Profile/Profile";
 import Admin from "./pages/Admin/Admin";
 import Favorite from './pages/favorite/favorite';
 
-import Map from "./component/Map.js/map";
+// import Map from "./component/Map.js/map";
 
 
 
@@ -33,7 +33,7 @@ const App = ()=>{
       {/* <Route path='/Error' exact component={Error}/>
       <Route path='/Success' exact component={Success}/> */}
       <Route path='/favorite' exact component={Favorite}/>    
-       <Route path='/map' exact component={Map}/> 
+       {/* <Route path='/map' exact component={Map}/>  */}
     
     </Switch>
     </BrowserRouter>

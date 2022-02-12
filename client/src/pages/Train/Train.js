@@ -41,7 +41,7 @@ const Train = () => {
             allowFullScreen
             />
   </div> */}
-);
+{/* ); */}
           <Filter/>
           <div className='products'>
             {loading ? (<Loader/>) : error ? (<Error error="Something went wrong"/>) : (

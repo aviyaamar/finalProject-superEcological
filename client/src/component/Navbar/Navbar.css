@@ -47,5 +47,33 @@
     border: none;
     font-size: 20px;
     background-color: white;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    color:#073a31
+}
+.dropdown{
+    display: flex;
+    text-decoration: none;
+    padding: 10px;
+    
+    
+}
+a{
+    text-decoration: none;
+    color: #073a31;
+    font-weight: 600;
+
+    
+}
+.nav-ul{
+    margin: 1px;
+    display: flex;
+    color: #073a31;
+    font-weight: 600;
+
+}
+.nav-site{
+padding: 4px 0;
+margin: 2px 0;
+
 }

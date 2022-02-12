@@ -92,9 +92,12 @@
     margin: 2% 0;
     letter-spacing: 0.05em;
     font-size: 25px;
-    font-weight: 300;
+    font-weight: 600;
 }
 .other{
-    width: 150px;
+    width: 310px;
     text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    
 }

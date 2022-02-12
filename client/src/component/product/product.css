@@ -63,9 +63,11 @@
     font-weight: 300;
 }
 .heart{
+
   border: none;
   background: transparent;
   color: #073a31;
   padding-left: 100px;
   padding-top: 60px;
+  
 }

@@ -118,7 +118,7 @@ const Register = () => {
             </div>
               </form>
           </div>
-          <span><Link className='btn other' to='/login'>Sing In</Link> </span> 
+          <span><Link className='btn other' to='/login'>SIGN IN</Link> </span> 
         </div>
       </div>
     </div>

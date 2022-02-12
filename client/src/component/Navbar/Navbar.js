@@ -58,34 +58,23 @@ const Navbar = () => {
             <nav className='navbar'>
                 <span className='logo'></span>
                 <div className='linksNav'> 
-                {currentUser ?  (currentUser.user.isAdmin) ?( <div className="dropdown"  style={{
-        position: "relative",
-        margin: "1px",
-        width: "auto",
-        display: "flex",
-        flexDirection:"column"
-      }} >
+                {currentUser ?  (currentUser.user.isAdmin) ?( <div className="dropdown"  >
                 <button  className='btn-name  text-center-h2' onClick={()=>setOpen(open => !open)} id="dropdownMenuButton" data-toggle="dropdown"> 
                 {currentUser.user.name}</button>
                 {open && 
                 <div className="shadow">
                <ul className='nav-ul'>
-                <div style={{textDecoration:'none'}} className=  "nav-site" onClick={() => setOpen(false)}><Link to="/profile"> Profile</Link></div>
-                 <div className='nav-site'><Link to="/order">Orders</Link></div> 
-                  <div className="nav-site" onClick={()=>{dispatch(logoutUser())}}>Logout  </div>
-                  <div className='nav-site'> <Link to='/admin'>Admin</Link></div>
+                <div className="nav-site" onClick={() => setOpen(false)}><Link to="/profile"> PROFILE</Link></div>
+                 <div className='nav-site'><Link to="/order">ORDERS</Link></div> 
+                  <div className="nav-site" onClick={()=>{dispatch(logoutUser())}}>LOGOUT  </div>
+                  <div className='nav-site'> <Link to='/admin'>ADMIN</Link></div>
                
                 </ul>
               </div>}
               </div> ) :
 
-              (<div className="dropdown" ref={drop} style={{
-                position: "relative",
-                margin: "16px",
-                width: "auto",
-                display: "inline-block"
-              }} >
-                        <button  type="button" onClick={()=>setOpen(open => !open)} id="dropdownMenuButton" data-toggle="dropdown"> 
+              (<div className="dropdown"  >
+                        <button  type="btn-name  text-center-h2" onClick={()=>setOpen(open => !open)} id="dropdownMenuButton" data-toggle="dropdown"> 
                         {currentUser.user.name}</button>
                         {open && 
                         <div className="shadow h-auto w-56 absolute">
