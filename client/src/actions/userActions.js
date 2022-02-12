@@ -1,4 +1,6 @@
 import Api from '../Api/Api'
+import { useHistory } from "react-router-dom";
+
 
 export const registerNewUser  = (user)=>{
     return async dispatch =>{
@@ -36,12 +38,13 @@ export const loginUser = (user) =>{
 }
 
 export const logoutUser = ()=>dispatch=>{
+  let history = useHistory();
     localStorage.removeItem('currentUser')
     localStorage.removeItem('cartItems')
     localStorage.removeItem('favoriteItems')
 
     dispatch({type : 'USER_LOGOUT'})
-    window.location.href='/login'
+    history.push("/login");
 }
 
 export const updateUser=(userid , updateduser)=>dispatch=>{
